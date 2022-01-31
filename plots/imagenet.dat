@@ -1,0 +1,7 @@
+2011	.25700	\\footnotesize~err=.257	\\footnotesize~\\citet{sanchez_high-dimensional_2011}
+2012	.15315	\\footnotesize~err=.153	\\footnotesize~\\citet{krizhevsky_imagenet_2012}	\\footnotesize\\it~AlexNet
+2013	.11537	\\footnotesize~err=.115	\\footnotesize
+2014	.07405	\\footnotesize~err=.074	\\footnotesize~\\citet{simonyan_very_2014}	\\footnotesize\\it~VGG19
+2015	.03567	\\footnotesize~err=.035	\\footnotesize~\\citet{he_deep_2016}		\\footnotesize\\it~ResNet
+2016	.02991	\\footnotesize~err=.029	\\footnotesize
+2017	.02251	\\footnotesize~err=.022	\\footnotesize~\\citet{hu_squeeze-and-excitation_2017}		\\scriptsize\\it~Squeeze~and~Excitation

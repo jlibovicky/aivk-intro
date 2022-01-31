@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+
+    \foreach \i in {1,...,8}{
+			\node[draw,inner sep=7pt,fill=Magenta!80] (A\i) at (\i, 0) {\i};
+			\node[draw,inner sep=7pt,fill=ForestGreen!80] (B\i) at (\i, 2.25) {\i};
+			\node[draw,inner sep=7pt,fill=Cerulean!80] (C\i) at (\i, 4.5) {\i};
+	}
+
+    \foreach \i in {1,...,8}{
+		\foreach \j in {1,...,8}{
+		    \pgfmathsetmacro{\lnW}{0.1 + random(0,10)/10};
+			\draw[->, line width=\lnW, color=Gray, -{latex[width=2mm,length=3mm]}] (A\i.north) -- (B\j.south);
+		    \pgfmathsetmacro{\lnW}{0.1 + random(0,10)/10};
+			\draw[->, line width=\lnW, color=Gray, -{latex[width=2mm,length=3mm]}] (B\i.north) -- (C\j.south);
+		}
+	}
+
+\end{tikzpicture}

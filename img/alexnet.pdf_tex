@@ -1,0 +1,76 @@
+%% Creator: Inkscape inkscape 0.92.3, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'alexnet.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{975.02618408bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.25857148)%
+%    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength]{./img/alexnet.pdf}}%
+     \put(0.02520091,0.20517551){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\Large$3~@~224\times 224$\end{tabular}}}}%
+    \put(0.10894608,0.22671286){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\Large$24~@~48\times 48$\end{tabular}}}}%
+      \put(0.188148,0.24671286){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\Large$48~@~27\times 27$\end{tabular}}}}%
+    \put(0.29749875,0.24671286){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\Large$60~@~13\times 13$\end{tabular}}}}%
+    \put(0.43539959,0.24671286){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\Large$60~@~13\times 13$\end{tabular}}}}%
+    \put(0.57791567,0.24671286){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\Large$50~@~13\times 13$\end{tabular}}}}%
+    \put(0.74263321,0.24458401){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\Large$1\times 2048$\end{tabular}}}}%
+    \put(0.83552707,0.24458401){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\Large$1\times 2048$\end{tabular}}}}%
+    \put(0.92072873,0.24458401){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\Large$1\times 1000$\end{tabular}}}}%
+
+    \put(0.03007414,0.05264383){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\Large RGB image\end{tabular}}}}%
+    \put(0.85997587,0.0194396){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\Large Flatten +\\\Large Dense layer\end{tabular}}}}%
+    \put(0.9461274,0.01964467){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\Large Dense\\\Large layer\end{tabular}}}}%
+    \put(0.16922524,0.0194396){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\Large Convolution +\\\Large Max-Pooling\end{tabular}}}}%
+    \put(0.29691412,0.0194396){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\Large Convolution +\\\Large Max-Pooling\end{tabular}}}}%
+    \put(0.43844878,0.00981421){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\Large Convolution\end{tabular}}}}%
+    \put(0.58306028,0.00981421){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\Large Convolution\end{tabular}}}}%
+      \put(0.7215181,0.0194396){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\Large Convolution +\\\Large Max-pooling\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

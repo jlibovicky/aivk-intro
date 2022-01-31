@@ -1,0 +1,453 @@
+\documentclass[aspectratio=169,dvipsnames,handout]{beamer}
+
+%\usepackage[czech]{babel}
+\usepackage[nounicodemath,custombib,czech]{ufalslides}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{booktabs}
+\newfontfamily\Symbola{Symbola}
+\newcommand{\emot}[1]{{\Symbola #1}}
+\usepackage{collcell}
+\usepackage{xstring}
+\usepackage{tikz-dependency}
+
+\usepackage{csquotes}
+\usepackage[citestyle=authoryear]{biblatex}
+
+
+\makeatletter
+\def\blx@nowarnpolyglossia{1}
+\makeatother
+
+\bibliography{odkazy.bib}
+
+\usepackage{tikz}
+\usepackage{gnuplot-lua-tikz}
+\usepackage{tikz-qtree}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows,shapes,positioning}
+\usetikzlibrary{arrows.meta}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\course{NAIL127 AI v Kontextu}
+\def\courseurl{https://ufal.mff.cuni.cz/AIvK}
+\def\title{Úvodní přednáška}
+\def\subtitle{Co je a není AI, co je strojové učení a neuronové sítě}
+\def\author{Jindřich Libovický, Tereza Hanemann, Rudolf Rosa}
+\def\date{14. února 2022}
+\def\licence{cc-by-nc-sa}
+%\def\langtech{}
+\def\shownavigation{}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+
+\section{AI v Kontextu}
+
+\begin{frame}{Tým AI v kontextu}
+
+    \begin{columns}
+        \column{30pt}
+    \begin{tikzpicture}
+    \clip (0,0) circle (30pt);
+    \node at (0.0,-0.15) {\includegraphics[scale=0.3]{img/tereza.jpg}};
+    \end{tikzpicture}
+        \column{.6\textwidth}
+        \textbf{Tereza Hanemann}
+
+    \end{columns}
+
+    \hspace*{20pt}\begin{columns}
+        \column{30pt}
+    \begin{tikzpicture}
+    \clip (0,0) circle (30pt);
+    \node at (0.0,-0.7) {\includegraphics[scale=0.35]{img/rudolfrosa.png}};
+    \end{tikzpicture}
+        \column{.6\textwidth}
+        \textbf{Rudolf Rosa}
+
+    \end{columns}
+
+    \hspace*{40pt}\begin{columns}
+        \column{30pt}
+    \begin{tikzpicture}
+    \clip (0,0) circle (30pt);
+    \node at (0.0,-0.3) {\includegraphics[scale=0.35]{img/jindrich.jpg}};
+    \end{tikzpicture}
+        \column{.6\textwidth}
+        \textbf{Jindřich Libovický}
+
+    \end{columns}
+
+\end{frame}
+
+\section{Co je umělá inteligence}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Ne-definice}
+
+    \begin{center}
+        \large
+    \textbf{Umělá inteligence} = obor informatiky, který se zabývá řešením
+    úloh\ldots
+    \end{center}
+
+    \begin{itemize}[<+->]
+
+        \item O kterých se vágně shodneme, že k~jejich řešení lidé potřebují
+            inteligenci
+
+        \item Někdy úlohy, které vyžadují velké mentální úsilí \\
+            \quad \emph{hraní šachů nebo Go, automatický překlad}
+
+        \item Někdy úlohy, které jsou pro člověka triviální \\
+            \quad \emph{rozpoznávání objektů na fotografii, rozpozávání řeči}
+
+    \end{itemize}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Inteligentní chování}
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Strong vs. Weak AI}
+
+    \begin{columns}
+        \column{.45\textwidth}
+        \textbf{Strong AI}
+
+
+
+        \column{.45\textwidth}
+        \textbf{Weak AI}
+    \end{columns}
+
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+\begin{frame}{Když se řekne AI}
+
+\end{frame}
+
+
+% ----------------------------------------------------------------------------
+
+\section{Strojové učení \& Neuronové sítě}
+
+\begin{frame}{Běžné programování vs. strojové učení}
+
+\end{frame}
+
+\begin{frame}{Obecné schéma}
+
+    \centering
+\scalebox{.8}{%
+\begin{tikzpicture}%
+[   normal arrow/.style={draw,-triangle 45,very thick},
+    big box/.style={draw=####1!20!black, fill=####1!60, minimum width=9em, minimum height=9em, rectangle, align=center},
+    small box/.style={draw, minimum height=5mm, minimum width=####1, rectangle}
+]
+\node[big box = RoyalBlue] (d) at (1, -5) {};
+\node[above] at (d.north) {};
+\node[below, align=center] at (d.north) {data};
+\node[big box = ForestGreen] (a) at (7, -5) {};
+\node[below, align=center] at (a.north) {učící algoritmus};
+\node[big box = Dandelion] (m) at (14, -5) {};
+\node[below, align=center] at (m.north) {model};
+
+\path[normal arrow] (d) -- (a);
+\path[normal arrow] (a) -- (m);
+
+\foreach \x in {1,...,3} {%
+	\node[small box = 5em] (x\x) at (0.4, -3.4 - \x * 0.8) {$x_{\x}$};
+	\node[small box = 1.5em] (y\x) at (2.2, -3.4 - \x * 0.8) {$y_{\x}$};
+	\path[draw] (x\x) -- (y\x);
+}
+\node[] (xc) at (0.4, -3.2 - 4 * 0.8) {$\vdots$};
+\node[] (yc) at (2.2, -3.2 - 4 * 0.8) {$\vdots$};
+
+\node[small box = 5em] (x) at (14, -2) {$x$};
+\node[small box = 1.5em] (y) at (14, -8) {$y$};
+
+\path[normal arrow] (x) -- (m);
+\path[normal arrow] (m) -- (y);
+
+\node[] (p) at (7, -1.5) {předpoklady};
+\node[] (po) at (7, -8.5) {požadavky};
+
+\path[draw, triangle 45-triangle 45, dashed] (d) -- (p);
+\path[normal arrow] (p) -- (a);
+\path[draw, triangle 45-triangle 45, dashed] (po) -- (m);
+\path[normal arrow] (po) -- (a);
+
+\node[small box = 6em] (meta) at (7, -5) {metaparametry};
+
+\node[small box = 6em] (par-alg) at (14, -5) {algoritmus};
+\node[small box = 6em] (par) at (14, -6) {parametry};
+
+\end{tikzpicture}}
+\end{frame}
+
+\begin{frame}{Příklad: klasifikace obrázků}
+\end{frame}
+
+\begin{frame}{Generalizace vs. přeučení}
+\end{frame}
+
+\begin{frame}{Neuronové síťě}
+Neuronony nejsou ani náhodou biologické neurony
+
+Nějaká historie
+\end{frame}
+
+\begin{frame}{Neuronová síť}
+Jak vypadá jednoduchá neuronová síť
+Je to vlastně spojitá funkce, co má hodně parameterů
+\end{frame}
+
+\begin{frame}{Chybová funkce}
+\end{frame}
+
+\begin{frame}{Trénování}
+\end{frame}
+
+\begin{frame}{Rizika učení z dat}
+Učí se z dat -- co je v datech, to je v modelu; chybová funkce (typicky počet správně klasifikovaných příkladů) nemusí postihnout problémy, které model může mít - příklad analýza CV
+
+\end{frame}
+
+\begin{frame}{}
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\section{Strojové vidění}
+
+\begin{frame}{Úlohy strojového vidění}
+\end{frame}
+
+\begin{frame}{Konvoluční sítě}
+Tady to všechno začala: konvoluční síť, AlexNet
+
+    \scalebox{0.8}{\input{img/convolution2d.pdf_tex}}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Hluboké konvoluční sítě}
+
+    \begin{center}
+        \scalebox{0.4}{\input{./img/alexnet.pdf_tex}}
+    \end{center}
+
+    \begin{itemize}[<+->]
+
+        \item Architecture: convolutions, max-pooling, residual connections,
+            batch normalization, 50--150 layers
+
+        \item Most frequent pre-training: ImageNet --- millions of images, 1k
+            labels
+
+    \end{itemize}
+ImageNet - předtrénovaná reprezentace z ImageNetu použitelná na jakoukoli jinou úlohu (ukázat úlohy: object detection, monocular depth estimation)
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{ImageNet challenge}
+
+    %\input{plots/imagenet.tex}
+
+\end{frame}
+
+
+\begin{frame}{Předtrénované reprezentace}
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Problémy ImageNetu}
+Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické koncepty…
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Rozpoznávání obličejů}
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\section{Zpracování přirozeného jazyka}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Co je zpracování přirozeného jazyka}
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Koncept embeddingu}
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Ukázka z překladače}
+    \hspace*{-10pt}\includegraphics{./plots/tsne.pdf}
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Princip transformeru}
+    \input{img/bipartite.tex}
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Encoder-decoder: Machine translation}
+\end{frame}
+
+% ----------------------------------------------------------------------------
+\begin{frame}{Zkreslení z dat}
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Předtrénované modely v NLP}
+
+    %málo trénovacích příkladů -- najdi mi všechny tweety, kde se někdo vyjadřuje kritickyo něčemu
+
+    \centering
+    \begin{tikzpicture}
+
+            \visible<3->{\draw[dashed,Gray] (0, -100pt) -- (0, 100pt);}
+
+            \node[draw,fill=Orange!80,inner sep=15pt] (bert) {\begin{tabular}{c}BERT \\ encoder\end{tabular}};
+
+            \visible<2->{
+            \node (pre) [left=50pt of bert.west] {\large\bf 1. Pre-training};
+            \node (pre2) [below=0pt of pre.south] {\small (do once, large data, long time)};
+            \node[draw,ellipse,inner sep=1pt,fill=Gray!20] (unlabeled) [above left=30pt and 30pt of bert.north west] {\begin{tabular}{c}unlabeled \\ datal\end{tabular}};
+            \draw[->] (unlabeled.east) to[out=0,in=90] (bert.north);
+            \node[draw,ellipse,inner sep=3pt,fill=Gray!20] (mlm) [below left=30pt and 30pt of bert.south west] {masked LM};
+            \draw[->] (bert.south) to[out=270,in=0] (mlm.east);}
+
+            \visible<3->{
+            \node (fine) [right=50pt of bert.east] {\large\bf 2. Finetuning};
+            \node (fine2) [below=0pt of fine.south] {\small (small data, fast)};
+            \node[draw,ellipse,inner sep=1pt,fill=Dandelion] (labeled) [above right=30pt and 30pt of bert.north east] {\begin{tabular}{c}tasks-pecific \\ data\end{tabular}};
+            \draw[->] (labeled.west) to[out=180,in=90] (bert.north);
+            \node[draw,ellipse,inner sep=3pt,fill=Dandelion] (loss) [below right=30pt and 30pt of bert.south east] {\begin{tabular}{c}task-specific \\ objective\end{tabular}};
+                    \draw[->] (bert.south) to[out=270,in=180] (loss.west);}
+
+
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Předtrénování: Masked Language Model}
+
+    \centering
+    \fbox{\large
+    \colorbox{lightgray}{All}
+    \colorbox{lightgray}{human}
+    \colorbox{lightgray}{being}
+    \colorbox{lightgray}{are}
+    \colorbox{lightgray}{born}
+    \only<1>{\colorbox{lightgray}{free}}%
+    \only<2>{\colorbox{GreenYellow}{free}}%
+    \only<3>{\colorbox{Rhodamine!30}{\texttt{MASK}}}%
+    \only<4>{\colorbox{Dandelion}{hairy}}%
+    \only<5->{\colorbox{GreenYellow}{free}}
+    \colorbox{lightgray}{and}
+    \colorbox{lightgray}{equal}
+    \colorbox{lightgray}{in}
+    \colorbox{lightgray}{dignity}
+    \colorbox{lightgray}{and}
+    \colorbox{lightgray}{rights}}
+
+    \vspace{20pt}
+
+    \begin{enumerate}
+
+        \item<2-> Randomly sample a word $\rightarrow$
+            \colorbox{GreenYellow}{free}
+
+        \item<3-> With 80\% change replace with special
+            \colorbox{Rhodamine!30}{\texttt{MASK}} token.
+
+        \item<4-> With 10\% change replace with random token $\rightarrow$
+            \colorbox{Dandelion}{hairy}
+
+        \item<5-> With 10\% change keep as is $\rightarrow$
+            \colorbox{GreenYellow}{free}
+
+    \end{enumerate}
+
+		\vspace{10pt}
+
+    \visible<6->{
+    Then a classifier should predict the missing/replaced word
+            \colorbox{GreenYellow}{free}}
+
+\end{frame}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{GPT and few shot learning}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+
+\begin{frame}{Férovost dat}
+
+Ukázat sprosťárny a nekorektní kecy, které GPT vygeneruje
+
+\end{frame}
+
+
+\section{Zpětnovazebné učení}
+
+% ----------------------------------------------------------------------------
+
+\section{Generativní adversariální sítě}
+
+
+\summary{Shrnutí}{%
+    \begin{enumerate}
+        \item Advantages of unsupervised methods.
+    \end{enumerate}
+}
+% ----------------------------------------------------------------------------
+
+%}
+
+%\begin{frame}[allowframebreaks]
+%\frametitle{Odkazy}
+%\bibliographystyle{plainnat}
+
+%\bibliography{odkazy.bib}
+
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{References}
+%\renewcommand*{\bibfont}{\footnotesize}
+%\printbibliography[heading=none]
+%\end{frame}
+
+
+\end{document}
