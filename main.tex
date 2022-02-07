@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169,dvipsnames,handout]{beamer}
+\documentclass[aspectratio=169,dvipsnames]{beamer}
 
 %\usepackage[czech]{babel}
 \usepackage[nounicodemath,custombib,czech]{ufalslides}
@@ -28,6 +28,7 @@
 \usetikzlibrary{arrows,shapes,positioning}
 \usetikzlibrary{arrows.meta}
 
+\setbeamercolor{blockcolor}{bg=gray!20, fg=black}
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -85,6 +86,15 @@
 
 \end{frame}
 
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Organizace předmětu}
+\end{frame}
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Program}
+\end{frame}
+
 \section{Co je umělá inteligence}
 
 % ----------------------------------------------------------------------------
@@ -92,50 +102,143 @@
 \begin{frame}{Ne-definice}
 
     \begin{center}
-        \large
+        \Large
     \textbf{Umělá inteligence} = obor informatiky, který se zabývá řešením
     úloh\ldots
     \end{center}
 
-    \begin{itemize}[<+->]
+    \vspace{10pt}
 
-        \item O kterých se vágně shodneme, že k~jejich řešení lidé potřebují
+    \begin{itemize}
+
+        \item<2-> O kterých se vágně shodneme, že k~jejich řešení lidé potřebují
             inteligenci
 
-        \item Někdy úlohy, které vyžadují velké mentální úsilí \\
+        \item<3-> Někdy úlohy, které vyžadují \textbf{velké mentální úsilí} \\
             \quad \emph{hraní šachů nebo Go, automatický překlad}
 
-        \item Někdy úlohy, které jsou pro člověka triviální \\
+        \item<4-> Někdy úlohy, které jsou \textbf{pro člověka triviální} \\
             \quad \emph{rozpoznávání objektů na fotografii, rozpozávání řeči}
 
     \end{itemize}
+
+    \centering\vspace{15pt}
+
+    \visible<5->{Hranice, co je a není AI, se posouvá\ldots}
 
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Inteligentní chování}
+\begin{frame}{Inteligentní chování = AI?}
+
+    \begin{columns}
+        \column{.40\textwidth}
+        \includegraphics[scale=0.45]{./img/navigation.pdf}
+
+        \column{.55\textwidth}
+
+        \begin{enumerate}
+
+            \item<2-> Rozpoznávání řeči \\
+                \visible<9->{\hfill\it\color{gray} neuronová síť naučená z nahrávek}
+
+            \item<3-> Analýza textu \\
+                \visible<10->{\hfill\it\color{gray} pravidla nebo neuronová síť}
+
+            \item<4-> Vyhledání cíle na mapě \\
+                \visible<11->{\hfill\it\color{gray} vyhledávání v databázi, spíš SW inženýrství}
+
+            \item<5-> Nalezení nejlepší cesty \\
+                \visible<12->{\hfill\it\color{gray} optimalizace, diskrétní matematika}
+
+            \item<6-> Určení polohy, rozhodnutí co je další krok na nejlepší cestě
+                \visible<13->{\hfill\it\color{gray} jednoduchý algoritmus}
+
+            \item<7-> Generování přirozeného jazyka \\
+                \visible<14->{\hfill\it\color{gray} jednoduchý algoritmus nebo neuronová síť}
+
+            \item<8-> Syntéza řeči \\
+                \visible<15->{\hfill\it\color{gray} neuronová síť naučená z nahrávek}
+
+        \end{itemize}
+
+    \end{columns}
+
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
 \begin{frame}{Strong vs. Weak AI}
 
-    \begin{columns}
+    \begin{columns}[t]
         \column{.45\textwidth}
-        \textbf{Strong AI}
+        \visible<1->{{\large \textbf{Strong AI}}}
 
+        \vspace{5pt}
+
+        \begin{itemize}
+
+            \item<2-> Také AGI -- Artifitial General Inteligence
+
+            \item<3-> Cílem je obecně \textbf{inteligentní stroj}, který v důsledku
+                toho umí řešit úlohy
+
+            \item<4-> Zajímavé filozofické problémy: Inteligenční singularita?
+                Musela by být AGI vtělená?
+
+        \end{itemize}
 
 
         \column{.45\textwidth}
-        \textbf{Weak AI}
+        \visible<5->{{\large \textbf{Weak AI}}}
+
+        \vspace{5pt}
+
+        \begin{itemize}
+
+            \item<6-> Také Narrow AI
+
+            \item<7-> Cílem je řešit \textbf{jednotlivé úlohy}, které vyžadují
+                inteligenci
+
+            \item<8-> Všechno, o čem bude řeč, je weak AI
+
+        \end{itemize}
     \end{columns}
 
 
 \end{frame}
 
 % ----------------------------------------------------------------------------
-\begin{frame}{Když se řekne AI}
+
+\begin{frame}{Strong AI: Turingův test}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Strong AI: Čínský pokoj}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Když se dneska řekne AI}
+
+    \Large
+
+    \begin{itemize}
+
+        \item Myslí se \textbf{weak AI}
+
+        \item Většinou jsou to metody založené na strojovém učení a zpracování
+            hodně dat
+
+        \item Často je to strojové učení pomocí neuronových sítí
+
+    \end{itemize}
+
 
 \end{frame}
 
@@ -144,9 +247,50 @@
 
 \section{Strojové učení \& Neuronové sítě}
 
-\begin{frame}{Běžné programování vs. strojové učení}
+\begin{frame}{Běžné programování vs.\ strojové učení}
+
+    {\large \textbf{Programování řešení}}
+
+    \begin{itemize}
+
+        \item<2-> Jsme schopni problém \textbf{formálně popsat} jasnými koncepty
+
+        \item<3-> Program je jednoznačný návod, jak s koncepty zacházet
+
+    \end{itemize}
+
+    \vspace{10pt}
+
+    \visible<3->{%
+    \begin{beamercolorbox}{blockcolor}
+    {\color{ufal} Příklad -- E-shop:} {\it Koncepty: zboží, sklad, zákazník,
+    objednávka} \\
+    \quad Udělat obědnávku, odeslat obědnávku = jednoduchý algoritmus
+    \end{beamercolorbox}}
+
+    \vspace{20pt}
+
+    \visible<4->{{\large \textbf{Učení řešení}}}
+
+    \begin{itemize}
+
+        \item<5-> Máme \textbf{příklady} vstupů a výstupů
+
+        \item<6-> Nejsme schopni do důsledku napsat návod, jak úlohu řešit
+
+    \end{itemize}
+
+    \vspace{10pt}
+
+    \visible<7->{%
+    \begin{beamercolorbox}[]{blockcolor}
+    {\color{ufal} Příklad -- strojový překlad:} {\it neexstiuje návod, pro člověka, který nerozumím oběma jazykům} \\
+    \quad Existuje mnoho přeložených textů, co se dají použít pro trénování
+    \end{beamercolorbox}}
 
 \end{frame}
+
+% ----------------------------------------------------------------------------
 
 \begin{frame}{Obecné schéma}
 
