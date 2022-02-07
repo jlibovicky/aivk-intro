@@ -359,11 +359,31 @@ Jak vypadá jednoduchá neuronová síť
 Je to vlastně spojitá funkce, co má hodně parameterů
 \end{frame}
 
+% ----------------------------------------------------------------------------
+
 \begin{frame}{Chybová funkce}
 \end{frame}
 
+% ----------------------------------------------------------------------------
+
 \begin{frame}{Trénování}
 \end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Kde se berou trénovací data}
+
+    {\large\textbf{Stahování z internetu}} --- neprezentativní, extrémní názory
+    jsou mnohem víc slyšet, není kontrola nad tím, co je v datech
+
+    {\large\textbf{Crowd-sourcing}} --- využívání levné pracovní síly, vznikají
+    prekarizovaná zaměstnání
+
+    {\large\textbf{Vytěžování existujících databází}} --- 
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
 
 \begin{frame}{Rizika učení z dat}
 Učí se z dat -- co je v datech, to je v modelu; chybová funkce (typicky počet správně klasifikovaných příkladů) nemusí postihnout problémy, které model může mít - příklad analýza CV
@@ -378,12 +398,57 @@ Učí se z dat -- co je v datech, to je v modelu; chybová funkce (typicky poče
 \section{Strojové vidění}
 
 \begin{frame}{Úlohy strojového vidění}
+
+    \vspace{-5pt}
+    \begin{center}
+        \large Cokoli, co se dá zjistit z obrazu, např. \ldots
+    \end{center}
+
+    \visible<2->{
+    \begin{columns}[t]
+        \column{.3\textwidth}
+        \centering \textbf{Rozpoznávání objektů} \\[1ex]
+        \includegraphics[width=.98\textwidth]{img/object_detection.png} \\
+        {\tiny Zdroj: \url{https://pjreddie.com/darknet/yolo}}
+
+        \column{.3\textwidth}
+        \centering \textbf{Odhad hloubky v obrazu} \\[1ex]
+        \includegraphics[width=.98\textwidth]{img/monocular_depth.png} \\
+        {\tiny Zdroj: \url{https://arxiv.org/abs/1810.01849}}
+
+        \column{.3\textwidth}
+        \centering \textbf{Poloha lidského těla} \\[1ex]
+        \includegraphics[width=.98\textwidth]{img/pose_detection.png} \\
+        {\tiny Zdroj: \url{https://towardsdatascience.com/realtime-multiple-person-2d-pose-estimation-using-tensorflow2-x-93e4c156d45f}}
+
+    \end{columns}}
+
+    \visible<3->{\begin{center}
+        \large \ldots pro člověka většinou triviální úlohy
+    \end{center}}
+
 \end{frame}
 
-\begin{frame}{Konvoluční sítě}
-Tady to všechno začala: konvoluční síť, AlexNet
+% ----------------------------------------------------------------------------
 
-    \scalebox{0.8}{\input{img/convolution2d.pdf_tex}}
+\begin{frame}{Konvoluční sítě}
+
+    \begin{minipage}{.45\textwidth}
+        \begin{itemize}[<+->]
+
+            \item Základní nástroj pro zpracování obrazu neuronovými sítěmi
+
+            \item Okénko, které jede přes obrázek a detekuje nějaké vzorce
+
+            \item Mnoho vrstvev $\rightarrow$ vzorce vzorců vzorců\ldots
+
+            \item Model si vytváří potřebné abstrakce
+
+        \end{itemize}
+    \end{minipage}\begin{minipage}{.45\textwidth}
+        \centering
+        \scalebox{0.7}{\input{img/convolution2d.pdf_tex}}
+    \end{minipage}
 
 \end{frame}
 
