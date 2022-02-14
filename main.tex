@@ -1,23 +1,24 @@
 \documentclass[aspectratio=169,dvipsnames]{beamer}
 
 %\usepackage[czech]{babel}
-\usepackage[nounicodemath,custombib,czech]{ufalslides}
+\usepackage{polyglossia}
+\setmainlanguage{czech}
+\usepackage[nounicodemath,czech]{ufalslides}
 \usepackage{xcolor}
 \usepackage{textcomp}
 \usepackage{booktabs}
 \usepackage{collcell}
 \usepackage{xstring}
 \usepackage{tikz-dependency}
+\usepackage{amssymb}
 
-\usepackage{csquotes}
-\usepackage[citestyle=authoryear]{biblatex}
+%\usepackage{csquotes}
+%\usepackage[citestyle=authoryear]{biblatex}
 
 
-\makeatletter
-\def\blx@nowarnpolyglossia{1}
-\makeatother
-
-\bibliography{odkazy.bib}
+%\makeatletter
+%\def\blx@nowarnpolyglossia{1}
+%\makeatother
 
 \usepackage{tikz}
 \usepackage{gnuplot-lua-tikz}
@@ -159,7 +160,7 @@
             \item<8-> Syntéza řeči \\
                 \visible<15->{\hfill\it\color{gray} neuronová síť naučená z nahrávek}
 
-        \end{itemize}
+        \end{enumerate}
 
     \end{columns}
 
@@ -171,7 +172,9 @@
 
     \begin{columns}[t]
         \column{.45\textwidth}
-        \visible<1->{{\large \textbf{Strong AI}}}
+        \begin{center}
+        \visible<1->{{\Large \textbf{Strong AI}}}
+        \end{center}
 
         \vspace{5pt}
 
@@ -189,7 +192,9 @@
 
 
         \column{.45\textwidth}
-        \visible<5->{{\large \textbf{Weak AI}}}
+        \begin{center}
+        \visible<5->{{\Large \textbf{Weak AI}}}
+        \end{center}
 
         \vspace{5pt}
 
@@ -210,15 +215,15 @@
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Strong AI: Turingův test}
-
-\end{frame}
-
-% ----------------------------------------------------------------------------
-
-\begin{frame}{Strong AI: Čínský pokoj}
-
-\end{frame}
+%\begin{frame}{Strong AI: Turingův test}
+%
+%\end{frame}
+%
+%% ----------------------------------------------------------------------------
+%
+%\begin{frame}{Strong AI: Čínský pokoj}
+%
+%\end{frame}
 
 % ----------------------------------------------------------------------------
 
@@ -230,10 +235,10 @@
 
         \item Myslí se \textbf{weak AI}
 
-        \item Většinou jsou to metody založené na strojovém učení a zpracování
-            hodně dat
+        \item Většinou jsou to metody založené na \textbf{strojovém učení} a zpracování
+            \textbf{hodně dat}
 
-        \item Často je to strojové učení pomocí neuronových sítí
+        \item Často je to strojové učení pomocí \textbf{neuronových sítí}
 
     \end{itemize}
 
@@ -259,7 +264,7 @@
 
     \vspace{10pt}
 
-    \visible<3->{%
+    \visible<4->{%
     \begin{beamercolorbox}{blockcolor}
     {\color{ufal} Příklad -- E-shop:} {\it Koncepty: zboží, sklad, zákazník,
     objednávka} \\
@@ -268,13 +273,13 @@
 
     \vspace{20pt}
 
-    \visible<4->{{\large \textbf{Učení řešení}}}
+    \visible<5->{{\large \textbf{Učení řešení}}}
 
     \begin{itemize}
 
-        \item<5-> Máme \textbf{příklady} vstupů a výstupů
+        \item<6-> Máme \textbf{příklady} vstupů a výstupů
 
-        \item<6-> Nejsme schopni do důsledku napsat návod, jak úlohu řešit
+        \item<7-> Nejsme schopni do důsledku napsat návod, jak úlohu řešit
 
     \end{itemize}
 
@@ -334,50 +339,168 @@
 
 \node[small box = 6em] (meta) at (7, -5) {metaparametry};
 
-\node[small box = 6em] (par-alg) at (14, -5) {algoritmus};
-\node[small box = 6em] (par) at (14, -6) {parametry};
+\node[small box = 6em] (par-alg) at (14, -5) {parametery};
+\node[small box = 6em] (par) at (14, -6) {algorithmus};
 
 \end{tikzpicture}}
+
+    \vspace{1em}
+
+    \visible<2->{Chceme model, co \textbf{generelalizuje} pro nová data.}
+
 \end{frame}
 
-\begin{frame}{Příklad: klasifikace obrázků}
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Příklad strojového učení}
+
+    \centering
+    \begin{tabular}{lcc}
+        & \visible<1->{\bf Rozpoznávání objektů & \bf Strojový překlad} \\ \midrule
+
+        \visible<2->{
+        \bf Data & $x$: RGB obrázek           & $x$: Věta ve zrodojovém jazyce \\
+             & $y$: Pozice a typ objektu  & $y$: Věta v cílovém jazyce \\ \midrule}
+
+         \visible<3->{
+        \bf Učící algoritmus & \multicolumn{2}{c}{Minimalizace chyby, gradient descent} \\ \midrule}
+
+    \visible<4->{
+        \bf Model & konvoluční neuronová síť & Transformer (neuronová síť)  \\ \midrule}
+
+    \visible<5->{
+    \bf Algoritmus & sliding window přes obrázek & autoregresivní dekódování \\
+               & (obdélníky různých velikostí) & (vždy jedno slov na výstup, \\
+               &  & jde na vstup v dalším kroku)}
+
+    \end{tabular}
+
+
 \end{frame}
+
+% ----------------------------------------------------------------------------
 
 \begin{frame}{Generalizace vs. přeučení}
+
+    \begin{center}
+    \includegraphics{./img/overfitting.png} \\
+    {\tiny Zdroj: https://www.geeksforgeeks.org/underfitting-and-overfitting-in-machine-learning}
+    \end{center}
+
+    \visible<2->{
+        \textbf{\Large Přeučení} = model si zapamatuje trénovací data, funguje dobře jenom pro data, co vypadají jako trénovací} \\
+    \visible<3->{\hfill \Large\bf \ldots nejčastější zdroj chyb a diskriminace}
+
 \end{frame}
 
-\begin{frame}{Neuronové síťě}
-Neuronony nejsou ani náhodou biologické neurony
+% ----------------------------------------------------------------------------
 
-Nějaká historie
+\begin{frame}{Neuronové síťě: Jeden neuron}
+
+    \begin{columns}
+        \column{.45\textwidth}
+        \input{img/single_neuron.tex}
+        \column{.45\textwidth}
+
+        \begin{itemize}[<+->]
+
+            \item Vstupy = reálná čísla
+
+            \item Smíchají s různými vahami
+
+            \item Začátek v 50.\ letech, insiprace představou o neuronu
+                ze 40.\ let
+
+            \item Dnes \textbf{nic společného} s biologickými neurony
+
+        \end{itemize}
+
+    \end{columns}
+
 \end{frame}
+
+% ----------------------------------------------------------------------------
 
 \begin{frame}{Neuronová síť}
-Jak vypadá jednoduchá neuronová síť
-Je to vlastně spojitá funkce, co má hodně parameterů
+
+    \centering
+    \includegraphics{./img/feedforward.pdf}
+
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Chybová funkce}
+\begin{frame}{Neuronová síť}
+
+    \begin{columns}
+        \column{.4\textwidth}
+
+        \scalebox{.75}{\input{./img/multilayer_perceptron.tex}}
+
+        \column{.5\textwidth}
+        \begin{itemize}[<+->]
+
+            \item Organizace do vrstev $\Rightarrow$
+
+            \begin{itemize}[<+->]
+
+                \item Na vstup vrstvy $\sim$ vektor
+
+                \item Vážení vstupů $\sim$ maticové násobení
+
+                \item Výstup vrstvy $\sim$ vektor
+
+            \end{itemize}
+
+        \item Většina výpočtů \textbf{maticové násobení} $\Rightarrow$ rychlé počítání
+            na GPU
+
+        \item Výstup NN = \textbf{spojitá funkce} vstupů
+
+        \end{itemize}
+    \end{columns}
+
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Trénování}
+\begin{frame}{Chybová funkce \& Trénování}
+
+    \begin{itemize}[<+->]
+
+        \item Trénování = \textbf{minimalizace chyby} na trénovacích datech
+
+        \item Když je chyba \textbf{spojitá funkce}, můžeme spočítat
+            \textbf{derivaci chyby} vzhledem k parametrům
+
+        \item Posunout paratetry po směru derivace = snížit chybu
+
+    \end{itemize}
+
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Kde se berou trénovací data}
+\begin{frame}{Problematická trénovací data}
 
-    {\large\textbf{Stahování z internetu}} --- neprezentativní, extrémní názory
+    \visible<1->{
+    {\Large\textbf{Stahování z internetu}} --- neprezentativní, extrémní názory
     jsou mnohem víc slyšet, není kontrola nad tím, co je v datech
+    \\ \hfill {\footnotesize \citep{bender2021dangers}}}
 
-    {\large\textbf{Crowd-sourcing}} --- využívání levné pracovní síly, vznikají
-    prekarizovaná zaměstnání
+    \vspace{15pt}
 
-    {\large\textbf{Vytěžování existujících databází}} --- 
+    \visible<2->{
+    {\Large\textbf{Crowd-sourcing}} --- využívání levné pracovní síly, tzv. gig
+    economy -- vznikají prekarizovaná zaměstnání
+    \\ \hfill {\footnotesize \citep[kap. 2]{crawford2021atlas}}}
+
+    \vspace{15pt}
+
+    \visible<3->{
+    {\Large\textbf{Vytěžování existujících databází}} --- neplacená práce
+    uživatelů, neprůhledné využití data
+    \\ \hfill {\footnotesize \citep{couldry2019costs}}}
 
 \end{frame}
 
@@ -388,8 +511,8 @@ Učí se z dat -- co je v datech, to je v modelu; chybová funkce (typicky poče
 
 \end{frame}
 
-\begin{frame}{}
-\end{frame}
+%\begin{frame}{}
+%\end{frame}
 
 % ----------------------------------------------------------------------------
 
@@ -412,7 +535,7 @@ Učí se z dat -- co je v datech, to je v modelu; chybová funkce (typicky poče
         \column{.3\textwidth}
         \centering \textbf{Odhad hloubky v obrazu} \\[1ex]
         \includegraphics[width=.98\textwidth]{img/monocular_depth.png} \\
-        {\tiny Zdroj: \url{https://arxiv.org/abs/1810.01849}}
+        {\tiny Zdroj: \citet[s.\ 9250, obr.\ 1]{pillai2019super}}
 
         \column{.3\textwidth}
         \centering \textbf{Poloha lidského těla} \\[1ex]
@@ -424,6 +547,32 @@ Učí se z dat -- co je v datech, to je v modelu; chybová funkce (typicky poče
     \visible<3->{\begin{center}
         \large \ldots pro člověka většinou triviální úlohy
     \end{center}}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Úlohy strojového vidění}
+
+    \visible<1->{\begin{center}
+        \large \ldots ale i vyžadující expertní znalost.
+    \end{center}}
+
+    \visible<2->{
+    \begin{columns}[t]
+        \column{.45\textwidth}
+        \centering \textbf{Detekce tuberkulózy} \\[1ex]
+        \includegraphics[scale=.13]{img/tuberculosis.png} \\
+        {\tiny Zdroj: \citet[obr.\ 3]{Pasa-et-al-2019}}
+
+        \column{.45\textwidth}
+        \centering \textbf{Katalogizace galaxií} \\[1ex]
+    \includegraphics[scale=.15]{img/galaxies.png} \\
+        {\tiny Zdroj: \citep[obr.\ 4]{gonzales2018galaxy}}
+    \end{columns}}
+
+    \centering
+    \visible<3->{Pro počítač žádný rozdíl.}
 
 \end{frame}
 
@@ -460,26 +609,75 @@ Učí se z dat -- co je v datech, to je v modelu; chybová funkce (typicky poče
 
     \begin{itemize}[<+->]
 
-        \item Architecture: convolutions, max-pooling, residual connections,
-            batch normalization, 50--150 layers
+        \item Hluboká architektura: konvoluce, max-pooling, residual connections,
+            batch normalization, 50--150 vrstev
 
-        \item Most frequent pre-training: ImageNet --- millions of images, 1k
-            labels
+        \item Typicky ,,předtrénováno'' na velkých datech, pro jednotlivé úlohy
+            se ,,dotrénovávají'' poslední vrstvy
 
     \end{itemize}
-ImageNet - předtrénovaná reprezentace z ImageNetu použitelná na jakoukoli jinou úlohu (ukázat úlohy: object detection, monocular depth estimation)
+
+%ImageNet - předtrénovaná reprezentace z ImageNetu použitelná na jakoukoli jinou úlohu (ukázat úlohy: object detection, monocular depth estimation)
+
 \end{frame}
+
+% ----------------------------------------------------------------------------
+
+%\begin{frame}{ImageNet: rozpoznávání objektů}
+%
+%    \begin{center}
+%        Dataset, který pomohl odstartovat revoluci ve strojovém učení.
+%    \end{center}
+%
+%    \cetering
+%    \includegraphics[scale=.4]{./img/imagenet.png}
+%    {\tiny Zdroj: \citet[obr\. 1]{deng2009imagenet}
+%
+%    \visible<2->{1.2M obrázků, 1000 různých tříd}
+%
+%\end{frame}
 
 % ----------------------------------------------------------------------------
 
 \begin{frame}{ImageNet challenge}
 
-    %\input{plots/imagenet.tex}
+    \centering
+    \input{plots/imagenet.tex}
 
 \end{frame}
 
+% ----------------------------------------------------------------------------
 
 \begin{frame}{Předtrénované reprezentace}
+
+    \begin{columns}
+
+        \column{.45\textwidth}
+        \centering
+
+        Nejpodobnější vektory k reprezentaci z poslední vrstvy AlexNetu.
+
+        \includegraphics[scale=0.25]{./img/alexnet_neighbors.png} \\
+        {\tiny Zdroj: \citet[obr.\ 4]{krizhevsky_imagenet_2012}}
+
+        % TODO: vyznačit sloupec a neighbors
+        % TODO: zopakovat obrázek AlexNetu 
+
+
+        \column{.45\textwidth}
+    \begin{itemize}[<+->]
+
+        \item Klasifikace obrázků se učí obecné rysy
+
+        \item Prakticky všechny úlohy začínají s předtrénovaným modelem
+
+        \item Postupně se nahrazuje unsupervised metodami
+
+    \end{itemize}
+
+
+    \end{columns}
+
 \end{frame}
 
 % ----------------------------------------------------------------------------
@@ -500,11 +698,189 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
 % ----------------------------------------------------------------------------
 
 \begin{frame}{Co je zpracování přirozeného jazyka}
+
+    \begin{center}
+
+        \Large Úlohy, pro jejichž řešení je potřeba (do nějaké míry) \\ \textbf{rozumět
+        lidskému jazyku}
+
+    \end{center}
+
+    \begin{itemize}[<+->]
+
+        \item základní řešení lze obvykle jednoduše naprogramovat
+
+        \item pro zvýšení úspěšnosti jsou potřeba stále složitější pravidla
+
+        \item od určité úrovně si neporadíme bez strojového učení
+
+    \end{itemize}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Motivační příklad: psaní I a Y (1)}
+
+    \begin{columns}[t]
+        \column{.48\textwidth}
+        {\large\bf Jednoduchá pravidla} \\ ~
+
+        \vspace{10pt}
+
+    \begin{tabular}{lc}
+        \visible<2->{
+        & \bf Úspěšnost \\ \midrule
+        Všechna I měkká        &    76.4\% \\}
+        \visible<3->{
+        + tvrdé souhlásky     &    77.5\% \\}
+        \visible<4->{
+        + předpona \emph{vy-} &    80.0\% \\}
+    \end{tabular}
+
+        \vspace{10pt}
+        Další pravidla potřebují větný rozbor
+
+        \column{.48\textwidth}
+        \visible<5->{
+            {\large\bf Jednoduchá statistika} \\}
+        \visible<6->{
+            \ldots každé slovo nejčastější pravopis}
+
+        \vspace{10pt}
+
+    \visible<7->{
+    \begin{tabular}{rc}
+        \bf Počet přečtených vět  &  \bf Úspěšnost \\ \midrule
+                          500 &    77.9\% \\
+                        5 000 &    85.3\% \\
+                       50 000 &    88.6\% \\
+                      500 000 &    90.4\% \\
+                    5 000 000 &    90.8\% \\
+    \end{tabular}}
+
+    \end{columns}
+
+    {\tiny Zdroj: Jindřich's Blog \url{https://jlibovicky.github.io/2017/02/22/Pravopis.html}}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Motivační příklad: psaní I a Y (2)}
+
+    \centering
+    \includegraphics[scale=.65]{./img/cs_spelling.pdf}
+
+    \visible<2->{
+    \begin{columns}
+        \column{.35\textwidth}
+        \begin{tabular}{lc}
+        \bf Metoda & \bf Úspěšnost \\ \midrule
+
+        Všechna měkká        &    70.4 \% \\
+        Jednoduchá pravidla  &    80.0 \% \\
+        Nejčastější pravopis &    90.8 \% \\
+        Neuronová síť        &    99.8 \% \\
+        \end{tabular}
+
+        \column{.45\textwidth}
+        \includegraphics[scale=.5]{./img/spelling_learning_curve_cs.pdf}
+    \end{columns}}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Vyhledávání odpovědí na otázky}
+
+    \centering
+    \includegraphics[scale=.26]{img/qa.png} \\
+    {\tiny Screenhot z~dema Allen Institute for AI \url{https://demo.allennlp.org/reading-comprehension/transformer-qa}}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Kontrola pravopisu}
+
+    \centering
+    \includegraphics[scale=.3]{img/grammarly.png} \\
+    {\tiny Zdroj: Webová reklama grammarly.com}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Strojový překlad}
+
+    \centering
+    \includegraphics[scale=.4]{img/lindat.png} \\
+    {\tiny Zdroj: Překladač CUBBIT \url{https://lindat.mff.cuni.cz/services/translation} \citep{popel2020transforming}}
+
+\end{frame}
+
+\begin{frame}{Entity extraction}
+
+    \includegraphics[scale=.4]{./img/mona_lisa.png}
+    {\tiny Zdroj: \url{https://dandelion.eu/semantic-text/entity-extraction-demo}}
+
+    \vspace{10pt}
+
+    \visible<2->{Podúlohy:}
+    \begin{enumerate}
+
+        \item<3-> Named entity recognition: nalézt v~textu řetězce, co obsahují
+            pojmenované entity
+
+        \item<4-> Entity linking: co entity znamenají (první pád, odkaz do
+            databáze/na Wikipedii)
+
+    \end{enumerate}
+
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
 \begin{frame}{Koncept embeddingu}
+
+    \begin{columns}
+
+    \column{.45\textwidth}
+    \begin{itemize}[<+->]
+
+        \item neuronové sítě potřebují spojité vstupy
+
+        \item one-hot vektor: očíslujeme slova, 0/1 idikuje slovo \\[1em]
+            \scalebox{.9}{\input{img/onehot.tex}}
+
+        \item první vrstva = násobení matricí
+
+    \end{itemize}
+    \column{.45\textwidth}
+
+        \visible<4->{
+        \centering
+        \scalebox{4}{\rotatebox{-90}{\Huge $\Rsh$}}
+
+        \vspace{5pt}
+
+        {\Large
+        Každé \textbf{slovo} (nebo jiná jednotka) je reprezentovaná mnohodimenzionálním
+        \textbf{vektorem}}}
+
+        \vspace{15pt}
+
+        \begin{itemize}
+
+            \item<5-> učí se ,,mimochodem`` z dat
+
+            \item<6-> mají zajímavé vlastnosti
+
+        \end{itemize}
+
+    \end{columns}
+
 \end{frame}
 
 % ----------------------------------------------------------------------------
@@ -516,12 +892,42 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
 % ----------------------------------------------------------------------------
 
 \begin{frame}{Princip transformeru}
-    \input{img/bipartite.tex}
+
+    \begin{columns}
+    \column{.45\textwidth}
+
+        \scalebox{.8}{\input{img/bipartite.tex}}
+
+    \column{.45\textwidth}
+        \begin{itemize}[<+->]
+
+            \item Mezi klasickými vrstvami tzv. \textbf{self-attention}
+
+            \item Každé slovo se ,,podívá'' na ostatní slova a vezme si z~něj
+                relevantní informace
+
+            \item Na začátku: vektor reprezentuje \textbf{izolované} slovo \\
+                Na konci: vektor reprezentuje slovo \textbf{v~kontextu} věty
+
+        \end{itemize}
+
+    \end{columns}
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Encoder-decoder: Machine translation}
+\begin{frame}{Encoder-decoder: Strojový překlad}
+
+    \begin{center}
+    \includegraphics[scale=0.55]{img/encoder_decoder.pdf}
+    \end{center}
+
+    \vspace{10pt}
+
+    \centering
+    \visible<2->{
+        Dekodér sbírá informace \textbf{z~předchozích slov} a \textbf{z~enkodéru}}
+
 \end{frame}
 
 % ----------------------------------------------------------------------------
@@ -532,8 +938,6 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
 
 \begin{frame}{Předtrénované modely v NLP}
 
-    %málo trénovacích příkladů -- najdi mi všechny tweety, kde se někdo vyjadřuje kritickyo něčemu
-
     \centering
     \begin{tikzpicture}
 
@@ -543,16 +947,16 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
 
             \visible<2->{
             \node (pre) [left=50pt of bert.west] {\large\bf 1. Pre-training};
-            \node (pre2) [below=0pt of pre.south] {\small (do once, large data, long time)};
-            \node[draw,ellipse,inner sep=1pt,fill=Gray!20] (unlabeled) [above left=30pt and 30pt of bert.north west] {\begin{tabular}{c}unlabeled \\ datal\end{tabular}};
+            \node (pre2) [below=0pt of pre.south] {\small (jednou, na velkých datech, trvá dlouho)};
+            \node[draw,ellipse,inner sep=1pt,fill=Gray!20] (unlabeled) [above left=30pt and 30pt of bert.north west] {\begin{tabular}{c}prostý \\ text\end{tabular}};
             \draw[->] (unlabeled.east) to[out=0,in=90] (bert.north);
             \node[draw,ellipse,inner sep=3pt,fill=Gray!20] (mlm) [below left=30pt and 30pt of bert.south west] {masked LM};
             \draw[->] (bert.south) to[out=270,in=0] (mlm.east);}
 
             \visible<3->{
             \node (fine) [right=50pt of bert.east] {\large\bf 2. Finetuning};
-            \node (fine2) [below=0pt of fine.south] {\small (small data, fast)};
-            \node[draw,ellipse,inner sep=1pt,fill=Dandelion] (labeled) [above right=30pt and 30pt of bert.north east] {\begin{tabular}{c}tasks-pecific \\ data\end{tabular}};
+            \node (fine2) [below=0pt of fine.south] {\small (malá data, rychle)};
+            \node[draw,ellipse,inner sep=1pt,fill=Dandelion] (labeled) [above right=30pt and 30pt of bert.north east] {\begin{tabular}{c}data pro \\ specifickou \\ úlohu\end{tabular}};
             \draw[->] (labeled.west) to[out=180,in=90] (bert.north);
             \node[draw,ellipse,inner sep=3pt,fill=Dandelion] (loss) [below right=30pt and 30pt of bert.south east] {\begin{tabular}{c}task-specific \\ objective\end{tabular}};
                     \draw[->] (bert.south) to[out=270,in=180] (loss.west);}
@@ -586,16 +990,16 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
 
     \begin{enumerate}
 
-        \item<2-> Randomly sample a word $\rightarrow$
+        \item<2-> Náhodně vybereme slovo $\rightarrow$
             \colorbox{GreenYellow}{free}
 
-        \item<3-> With 80\% change replace with special
-            \colorbox{Rhodamine!30}{\texttt{MASK}} token.
+        \item<3-> S~pravděpodobností 80\% ho nahradíme značku
+            \colorbox{Rhodamine!30}{\texttt{MASK}}
 
-        \item<4-> With 10\% change replace with random token $\rightarrow$
+        \item<4-> S~pravděpodobností 10\% ho nahradíme náhodným slovem $\rightarrow$
             \colorbox{Dandelion}{hairy}
 
-        \item<5-> With 10\% change keep as is $\rightarrow$
+        \item<5-> S~pravděpodobností 10\% ho necháme, jak je $\rightarrow$
             \colorbox{GreenYellow}{free}
 
     \end{enumerate}
@@ -608,16 +1012,52 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
 
 \end{frame}
 
-% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 % ----------------------------------------------------------------------------
 
-\begin{frame}{GPT and few shot learning}
+\begin{frame}{Pre-training -- Finetuning}
+
+    \centering
+
+    {\huge
+    Většina state-of-the-art řešení v NLP používá předtrénovaný model
+    dotrénovaný na datech specifických pro úlohu.}
+
+    \vspace{30pt}
+
+    S výjimkou strojového překladu ,,velkých jazyků'' platí pro všechny úlohy,
+    co jsme viděli.
+
+    \vspace{10pt}
+
+    Trend vývoje: lepší předtrénované modely, nižší potřeba specifických dat
 
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
+\begin{frame}{Jazykové modely GPT}
+
+    \begin{itemize}[<+->]
+
+        \item GPT = Generative Pre-trained Transformer
+
+        \item Model, který předpovídá, jaké slovo v textu může následovat \\
+            \it v~projektu TheAItre ho použili ke generování divadelní hry
+
+        \item GPT-3 je natrénovaný na ?? větách
+
+        \item Model, který je asi nejblíže populárním představám o AI
+
+    \end{itemize}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Jazykové modely GPT}
+\end{frame}
+
+% ----------------------------------------------------------------------------
 
 \begin{frame}{Férovost dat}
 
@@ -642,13 +1082,7 @@ Ukázat sprosťárny a nekorektní kecy, které GPT vygeneruje
 
 %}
 
-%\begin{frame}[allowframebreaks]
-%\frametitle{Odkazy}
-%\bibliographystyle{plainnat}
-
-%\bibliography{odkazy.bib}
-
-%\end{frame}
+\references{odkazy.bib}
 
 %\begin{frame}
 %\frametitle{References}

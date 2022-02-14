@@ -1,11 +1,11 @@
 SHELL=bash
 NAME=main
 LATEX=xelatex
-# SVGFILES := $(wildcard img/*.svg)
+SVGFILES := $(wildcard img/*.svg)
 # GNUFILES := $(wildcard plots/*.gnu)
 #PY_PLOTS := $(wildcard plots/*.py)
 
-FILES=$(NAME).tex odkazy.bib #$(PY_PLOTS:%.py=%.pgf) #$(SVGFILES:%.svg=%.pdf)
+FILES=$(NAME).tex odkazy.bib $(SVGFILES:%.svg=%.pdf) #$(PY_PLOTS:%.py=%.pgf) #
 all: $(NAME).pdf
 
 $(NAME).pdf: $(FILES)
