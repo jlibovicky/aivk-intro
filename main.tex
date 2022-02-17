@@ -35,11 +35,11 @@
 \def\courseurl{https://ufal.mff.cuni.cz/AIvK}
 \def\title{Úvodní přednáška}
 \def\subtitle{Co je a není AI, co je strojové učení a neuronové sítě}
-\def\author{Jindřich Libovický, Tereza Hanemann, Rudolf Rosa}
-\def\date{14. února 2022}
+\def\author{Tereza Hanemann, Jindřich Libovický, Rudolf Rosa}
+\def\date{17. února 2022}
 \def\licence{cc-by-nc-sa}
 %\def\langtech{}
-\def\shownavigation{}
+%\def\shownavigation{}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -50,49 +50,139 @@
 
 \begin{frame}{Tým AI v kontextu}
 
-    \begin{columns}
-        \column{30pt}
+    \begin{minipage}{70pt}
     \begin{tikzpicture}
     \clip (0,0) circle (30pt);
-    \node at (0.0,-0.15) {\includegraphics[scale=0.3]{img/tereza.jpg}};
+    \node at (0.0,-0.10) {\includegraphics[scale=0.3]{img/tereza.jpg}};
     \end{tikzpicture}
-        \column{.6\textwidth}
-        \textbf{Tereza Hanemann}
+    \end{minipage}\begin{minipage}{200pt}
+        \textbf{Tereza Hanemann} \\
+        \textit{Katedra softwaru a výuky informatiky}
+    \end{minipage}
 
-    \end{columns}
+    \vspace{10pt}
 
-    \hspace*{20pt}\begin{columns}
-        \column{30pt}
+    \hspace{40pt}\begin{minipage}{70pt}
     \begin{tikzpicture}
     \clip (0,0) circle (30pt);
-    \node at (0.0,-0.7) {\includegraphics[scale=0.35]{img/rudolfrosa.png}};
+    \node at (0.0,-0.75) {\includegraphics[scale=0.35]{img/rudolfrosa.png}};
     \end{tikzpicture}
-        \column{.6\textwidth}
-        \textbf{Rudolf Rosa}
+    \end{minipage}\begin{minipage}{250pt}
+        \textbf{Rudolf Rosa} \\
+        \textit{Ústav formální a aplikované lingvistiky} \\
+        \quad$\bullet$ analýza chování neuronových sítí \\
+        \quad$\bullet$ generování jazyka (divadelních her)
+    \end{minipage}
 
-    \end{columns}
+    \vspace{10pt}
 
-    \hspace*{40pt}\begin{columns}
-        \column{30pt}
+    \hspace{80pt}\begin{minipage}{70pt}
     \begin{tikzpicture}
     \clip (0,0) circle (30pt);
-    \node at (0.0,-0.3) {\includegraphics[scale=0.35]{img/jindrich.jpg}};
+    \node at (0.0,-0.35) {\includegraphics[scale=0.35]{img/jindrich.jpg}};
     \end{tikzpicture}
-        \column{.6\textwidth}
-        \textbf{Jindřich Libovický}
-
-    \end{columns}
+    \end{minipage}\begin{minipage}{250pt}
+        \textbf{Jindřich Libovický} \\
+        \textit{Ústav formální a aplikované lingvistiky} \\
+        \quad$\bullet$ neuronový strojový překlad \\
+        \quad$\bullet$ vícejazyčné reprezentace vět pomocí neuronových sítí
+    \end{minipage}
 
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
 \begin{frame}{Organizace předmětu}
+
+    \begin{itemize}[<+->]
+
+        \item Úvodní přednáška -- \texbf{teď}
+
+        \begin{itemize}[<+->]
+
+            \item Technický úvod, do je/není AI
+
+            \item Základy strojového učení a neuronových sítí
+
+            \item Ukázky z~počítačového vidění a zpracování jazyka
+
+        \end{itemize}
+
+        \item Přednášky: host mluví na dané téma \\
+            \quad 24.2. \quad 10.3. \quad 24.3. \quad 14.4. \quad 28.4
+
+
+        \item Semináře: téma předchozí přednášky, obvykle založené na čtení
+            nějaké literatury \\
+            \quad 3.3. \quad 17.3. \quad 31.3. \quad 21.4. \quad 5.5.
+
+        \item Na závěr (12.5.) shrnutí a závěrečný test
+
+    \end{itemize}
+
+    \vspace{10pt}
+
+    \centering
+    \visible<8->{\fbox{\begin{minipage}{.9\textwidth}
+        \Large Zápočet: \\ $\bullet$ \textbf{účast} na 4 přednáškách a 4 seminářích (pokud
+            pandemie dovolí) \\ $\bullet$ \textbf{závěrečný test} (pouze informativní)
+    \end{minipage}}}
+
 \end{frame}
 % ----------------------------------------------------------------------------
 
 \begin{frame}{Program}
+
+    \small
+    \begin{tabular}{cl}
+        \toprule
+    Datum   &   Program \\ \midrule
+    17. 2.  & Úvodní přednáška \\ \midrule
+    24. 2.  & Dita Malečková (AI v kontextu umění) \\
+    3. 3.   & Seminář 1 \\ \midrule
+    10. 3.  & David Černý (Ústav státu a práva, Ústav informatiky AV ČR, AI v kontextu etiky) \\
+    17. 3.  & Seminář 2 \\ \midrule
+    24. 3.  & Veronika Macková (FSV UK, AI v kontextu žurnalistiky) \\
+    31. 3.  & Seminář 3 \\ \midrule
+    14. 4.  & Petr Kajzar (1. LF UK, AI v kontextu medicíny) \\
+    21. 4.  & Seminář 4 \\ \midrule
+    28. 4.  & František Štěch (ETF UK, AI v kontextu náboženství) \\
+    5. 5.   & Seminář 5 \\ \midrule
+    12. 5.  & Závěrečné shrnutí a test \\
+    \bottomrule
+    \end{tabular}
+
+
 \end{frame}
+
+\begin{frame}{Materiály k~seminářům}
+
+    \begin{center}
+        Pošleme e-mail, až to bude aktuální.
+    \end{center}
+
+    \begin{center}
+        \tt\Large
+        \fbox{https://ufallab.ms.mff.cuni.cz/$\sim$libovicky/avik}
+    \end{center}
+
+    \vspace{15pt}
+
+    \begin{center}
+        \Large Heslo je na tabuli \\ $\Downarrow$
+    \end{center}
+
+
+\end{frame}
+
+\begin{frame}{Dotazník}
+
+    \begin{center}
+        \bf\Huge Rozdat dotazník.
+    \end{center}
+\end{frame}
+
+% ----------------------------------------------------------------------------
 
 \section{Co je umělá inteligence}
 
@@ -205,7 +295,7 @@
             \item<7-> Cílem je řešit \textbf{jednotlivé úlohy}, které vyžadují
                 inteligenci
 
-            \item<8-> Všechno, o čem bude řeč, je weak AI
+            \item<8-> Všechno, o čem bude dnes řeč, je weak AI
 
         \end{itemize}
     \end{columns}
@@ -268,7 +358,7 @@
     \begin{beamercolorbox}{blockcolor}
     {\color{ufal} Příklad -- E-shop:} {\it Koncepty: zboží, sklad, zákazník,
     objednávka} \\
-    \quad Udělat obědnávku, odeslat obědnávku = jednoduchý algoritmus
+    \quad Udělat objednávku, odeslat objednávku = jednoduchý algoritmus
     \end{beamercolorbox}}
 
     \vspace{20pt}
@@ -285,9 +375,9 @@
 
     \vspace{10pt}
 
-    \visible<7->{%
+    \visible<8->{%
     \begin{beamercolorbox}[]{blockcolor}
-    {\color{ufal} Příklad -- strojový překlad:} {\it neexstiuje návod, pro člověka, který nerozumím oběma jazykům} \\
+    {\color{ufal} Příklad -- automatický překlad:} {\it neexistuje návod, pro člověka, který nerozumí oběma jazykům} \\
     \quad Existuje mnoho přeložených textů, co se dají použít pro trénování
     \end{beamercolorbox}}
 
@@ -340,7 +430,7 @@
 \node[small box = 6em] (meta) at (7, -5) {metaparametry};
 
 \node[small box = 6em] (par-alg) at (14, -5) {parametery};
-\node[small box = 6em] (par) at (14, -6) {algorithmus};
+\node[small box = 6em] (par) at (14, -6) {algoritmus};
 
 \end{tikzpicture}}
 
@@ -359,7 +449,7 @@
         & \visible<1->{\bf Rozpoznávání objektů & \bf Strojový překlad} \\ \midrule
 
         \visible<2->{
-        \bf Data & $x$: RGB obrázek           & $x$: Věta ve zrodojovém jazyce \\
+        \bf Data & $x$: RGB obrázek           & $x$: Věta ve zrdojovém jazyce \\
              & $y$: Pozice a typ objektu  & $y$: Věta v cílovém jazyce \\ \midrule}
 
          \visible<3->{
@@ -395,7 +485,7 @@
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Neuronové síťě: Jeden neuron}
+\begin{frame}{Neuronové sítě: Jeden neuron}
 
     \begin{columns}
         \column{.45\textwidth}
@@ -408,7 +498,7 @@
 
             \item Smíchají s různými vahami
 
-            \item Začátek v 50.\ letech, insiprace představou o neuronu
+            \item Začátek v 50.\ letech, inspirace představou o neuronu
                 ze 40.\ let
 
             \item Dnes \textbf{nic společného} s biologickými neurony
@@ -421,9 +511,13 @@
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Neuronová síť}
+\begin{frame}{Neuronová síť: Více vrstev}
 
     \centering
+    Úloha: rozpoznat písmeno z~mřížky 4$\times$4 pixely
+
+    \vspace{10pt}
+
     \includegraphics{./img/feedforward.pdf}
 
 \end{frame}
@@ -473,7 +567,7 @@
         \item Když je chyba \textbf{spojitá funkce}, můžeme spočítat
             \textbf{derivaci chyby} vzhledem k parametrům
 
-        \item Posunout paratetry po směru derivace = snížit chybu
+        \item Posunout parametry po směru derivace = snížit chybu
 
     \end{itemize}
 
@@ -506,12 +600,32 @@
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Rizika učení z dat}
-Učí se z dat -- co je v datech, to je v modelu; chybová funkce (typicky počet správně klasifikovaných příkladů) nemusí postihnout problémy, které model může mít - příklad analýza CV
+\begin{frame}{Problémy učení z dat: Overfitting}
+
+    \begin{itemize}
+
+        \item<1-> Optimalizované metriky nepostihnou všechno \\[1ex]
+            \visible<2->{
+            \quad\begin{minipage}{360pt}
+                \it Vyhledávání vhodných kandidátů podle CV: když doporučím
+                samé vhodné kandidáty, ani si nevšimnu, že jsem nedoporučil
+                jiné vhodné (třeba podle rasy)
+            \end{minipage} \\
+            {\tiny \citep{derous2019your,bender2018data}}}
+
+        \item<3-> Stereotypy můžou být pro model efektivní způsob optimalizace \\
+
+            \visible<4->{
+                \includegraphics[width=350pt]{img/doctor.png}} \\
+            \visible<5->{
+                \includegraphics<5->[width=350pt]{img/sexy_doctor.png} \\
+            {\tiny Příklad \citet[obr.\ 6 a 7]{rozhledy}} }
+
+    \end{itemize}
 
 \end{frame}
 
-%\begin{frame}{}
+%\begin{frame}{Problémy učení z dat: Out-of-domain}
 %\end{frame}
 
 % ----------------------------------------------------------------------------
@@ -617,25 +731,24 @@ Učí se z dat -- co je v datech, to je v modelu; chybová funkce (typicky poče
 
     \end{itemize}
 
-%ImageNet - předtrénovaná reprezentace z ImageNetu použitelná na jakoukoli jinou úlohu (ukázat úlohy: object detection, monocular depth estimation)
-
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
-%\begin{frame}{ImageNet: rozpoznávání objektů}
-%
-%    \begin{center}
-%        Dataset, který pomohl odstartovat revoluci ve strojovém učení.
-%    \end{center}
-%
-%    \cetering
-%    \includegraphics[scale=.4]{./img/imagenet.png}
-%    {\tiny Zdroj: \citet[obr\. 1]{deng2009imagenet}
-%
-%    \visible<2->{1.2M obrázků, 1000 různých tříd}
-%
-%\end{frame}
+\begin{frame}{ImageNet: rozpoznávání objektů}
+
+    \begin{center}
+        Dataset, který pomohl odstartovat revoluci ve strojovém učení.
+    \end{center}
+
+    \centering
+
+    \includegraphics[scale=.34]{./img/imagenet.png} \\
+    {\tiny Zdroj: \citet[obr.\ 1]{deng2009imagenet}}
+
+    \visible<2->{14M obrázků, 1000 různých tříd}
+
+\end{frame}
 
 % ----------------------------------------------------------------------------
 
@@ -683,13 +796,27 @@ Učí se z dat -- co je v datech, to je v modelu; chybová funkce (typicky poče
 % ----------------------------------------------------------------------------
 
 \begin{frame}{Problémy ImageNetu}
-Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické koncepty…
+
+    \begin{itemize}[<+->]
+
+        \item Založeno na lexikální databázi z 80.\ let -- reflektuje o čem se
+            mluvilo v USA před 40 lety
+
+        \item Není kulturně neutrální: anglické slovo \emph{shovel} v~severní
+            Americe a v~jižní Africe \\ {\tiny obrázek z prezentace
+            \citet{liu-etal-2021-visually}} \\
+            \includegraphics[scale=.35]{img/shovel.png}
+
+        \item Obsahuje obrázky ke nutně stereotypním konceptům jako {\tiny \citep[str.\ 109]{crawford2021atlas}} \\
+            \quad\it ,,alcoholic,'' ,,ape-­man,'' ,,crazy,'' ,,hooker''
+    \end{itemize}
+
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Rozpoznávání obličejů}
-\end{frame}
+%\begin{frame}{Rozpoznávání obličejů}
+%\end{frame}
 
 % ----------------------------------------------------------------------------
 
@@ -708,11 +835,11 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
 
     \begin{itemize}[<+->]
 
-        \item základní řešení lze obvykle jednoduše naprogramovat
+        \item<2-> základní řešení lze obvykle jednoduše naprogramovat
 
-        \item pro zvýšení úspěšnosti jsou potřeba stále složitější pravidla
+        \item<3-> pro zvýšení úspěšnosti jsou potřeba stále složitější pravidla
 
-        \item od určité úrovně si neporadíme bez strojového učení
+        \item<4-> od určité úrovně si neporadíme bez strojového učení
 
     \end{itemize}
 
@@ -739,17 +866,17 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
     \end{tabular}
 
         \vspace{10pt}
-        Další pravidla potřebují větný rozbor
+        \visible<5->{Další pravidla potřebují větný rozbor}
 
         \column{.48\textwidth}
-        \visible<5->{
-            {\large\bf Jednoduchá statistika} \\}
         \visible<6->{
+            {\large\bf Jednoduchá statistika} \\}
+        \visible<7->{
             \ldots každé slovo nejčastější pravopis}
 
         \vspace{10pt}
 
-    \visible<7->{
+    \visible<8->{
     \begin{tabular}{rc}
         \bf Počet přečtených vět  &  \bf Úspěšnost \\ \midrule
                           500 &    77.9\% \\
@@ -760,6 +887,8 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
     \end{tabular}}
 
     \end{columns}
+
+    \vspace{20pt}
 
     {\tiny Zdroj: Jindřich's Blog \url{https://jlibovicky.github.io/2017/02/22/Pravopis.html}}
 
@@ -822,7 +951,7 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
 
 \begin{frame}{Entity extraction}
 
-    \includegraphics[scale=.4]{./img/mona_lisa.png}
+    \includegraphics[scale=.4]{./img/mona_lisa.png} \\
     {\tiny Zdroj: \url{https://dandelion.eu/semantic-text/entity-extraction-demo}}
 
     \vspace{10pt}
@@ -851,10 +980,10 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
 
         \item neuronové sítě potřebují spojité vstupy
 
-        \item one-hot vektor: očíslujeme slova, 0/1 idikuje slovo \\[1em]
+        \item one-hot vektor: očíslujeme slova, 0/1 indikuje slovo \\[1em]
             \scalebox{.9}{\input{img/onehot.tex}}
 
-        \item první vrstva = násobení matricí
+        \item první vrstva = násobení maticí
 
     \end{itemize}
     \column{.45\textwidth}
@@ -886,7 +1015,8 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
 % ----------------------------------------------------------------------------
 
 \begin{frame}{Ukázka z překladače}
-    \hspace*{-10pt}\includegraphics{./plots/tsne.pdf}
+    \hspace*{-10pt}\includegraphics{./plots/tsne.pdf} \\
+    \tiny Zdroj: \citet{rozhledy}
 \end{frame}
 
 % ----------------------------------------------------------------------------
@@ -912,6 +1042,10 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
         \end{itemize}
 
     \end{columns}
+
+    \vspace{10pt}
+    \tiny Transformer původně představili \citet{vaswani2017attention}
+
 \end{frame}
 
 % ----------------------------------------------------------------------------
@@ -926,13 +1060,14 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
 
     \centering
     \visible<2->{
-        Dekodér sbírá informace \textbf{z~předchozích slov} a \textbf{z~enkodéru}}
+        Dekodér sbírá informace \textbf{z~předchozích slov} a \textbf{z~enkodéru}} \\
+    \tiny Koncept enkodéru-dekodéru: \citep{kalchbrenner2013recurrent,sutskever2014sequence,bahdanaou2015neural}
 
 \end{frame}
 
 % ----------------------------------------------------------------------------
-\begin{frame}{Zkreslení z dat}
-\end{frame}
+%\begin{frame}{Zkreslení z dat}
+%\end{frame}
 
 % ----------------------------------------------------------------------------
 
@@ -1007,8 +1142,12 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
 		\vspace{10pt}
 
     \visible<6->{
-    Then a classifier should predict the missing/replaced word
-            \colorbox{GreenYellow}{free}}
+    Model se snaží uhádnout chybějící slovo \colorbox{GreenYellow}{free}}
+    \visible<7->{
+    \ldots aby to dokázal musí nějak ,,rozumět'' zbytku věty.}
+
+    \vspace{20pt}
+    \tiny Myšlenka Masked Language model, viz. \citet{devlin2019bert}
 
 \end{frame}
 
@@ -1044,9 +1183,19 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
         \item Model, který předpovídá, jaké slovo v textu může následovat \\
             \it v~projektu TheAItre ho použili ke generování divadelní hry
 
-        \item GPT-3 je natrénovaný na ?? větách
+        \item GPT-3 je natrénovaný na 45TB textu (37 milionů Zločinů a trestů),
+            má 175 miliard parametrů (1600$\times$ více než BERT)
 
-        \item Model, který je asi nejblíže populárním představám o AI
+            \begin{itemize}[<+->]
+
+                \item BERT by mohl běžet na GPU z~PlayStation 5
+
+                \item GPT-3 by potřebovalo přes 100 PlayStationů
+
+            \end{itemize}
+
+            \item GPT-3 je asi nejblíže populárním představám o AI, ale
+            v~praxi nepoužitelný
 
     \end{itemize}
 
@@ -1054,28 +1203,194 @@ Problémy imagenetu: koncepty z WordNetu, labely jako “weirdo”, rasistické 
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Jazykové modely GPT}
+\begin{frame}{Few-shot learning}
+
+    \begin{center}
+        \visible<2->{{\color{gray} Šedý text je \textbf{vstup do modelu},} černý text je jak \textbf{model navázal}.} \\
+        \fbox{\includegraphics[scale=.5]{img/few-shot.png}} \\
+        \tiny Zdroj: \citet[obr.\ 3.17]{brown2020gpt}
+    \end{center}
+
+    \begin{itemize}
+
+        \item<3-> Neprobíhá učení -- žádný update parametrů
+
+        \item<4-> Jazykový model vidí příklad a pokračuje ve stejném stylu
+
+    \end{itemize}
+
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
 \begin{frame}{Férovost dat}
 
-Ukázat sprosťárny a nekorektní kecy, které GPT vygeneruje
+    \begin{center}
+
+        \visible<1->{Modely potřebují \textbf{enormní množství textu}, které
+        je jenom na Internetu\ldots}
+
+        \visible<2->{\ldots Internet je plný \textbf{toxického obsahu}.}
+    \end{center}
+
+    \centering
+
+    \visible<3->{
+        GPT-2 navrhuje pokračování textu: \\
+        \includegraphics[scale=.42]{./img/hitler.png}}
+
+    \visible<4->{
+        \includegraphics[scale=.42]{./img/america.png}}
+
+
+    {\tiny Vytvořeno pomocí \url{https://transformer.huggingface.co/doc/gpt2-large}, model: \citet{radford2019language}}
+
 
 \end{frame}
 
 
-\section{Zpětnovazebné učení}
+%\section{Zpětnovazebné učení}
 
 % ----------------------------------------------------------------------------
 
-\section{Generativní adversariální sítě}
+\section{Modely, co se učí samy}
 
+
+\begin{frame}{Modely, co se učí samy}
+
+    \begin{itemize}[<+->]
+
+        \item Většina, co jsme viděli, trénované z~párů \emph{vstup-výstup}
+            \\ \quad\emph{supervised learning} (učení s~učitelem)
+
+        \item Modely se mohou učit od sebe navzájem
+
+        \item Reinforcement learning -- AlphaGo: Model hraje Go s~různými
+            verzemi sebe sama {\tiny \citep{singh2017learning}}
+
+        \item Zpětný překlad ve strojovém překladu: překlad jednojazyčných
+            textů je vstup do překladače na druhou stranu {\tiny \citep{sennrich2016improving}}
+
+        \item Generativní adversariální sítě\ldots
+
+    \end{itemize}
+
+\end{frame}
+
+\end{frame}
+
+\begin{frame}{Generator-discrimitor}
+
+    \begin{itemize}[<+->]
+
+        \item Většina, co jsme viděli, trénované z~párů \emph{vstup-výstup}
+
+        \item Hrají proti sobě dvě neuronové sítě: {\bf generátor} a {\bf
+            diskriminátor}
+
+    \end{itemize}
+
+    \vspace{10pt}
+
+    \begin{columns}[t]
+        \column{.45\textwidth}
+        \visible<3->{\textbf{Generátor}}
+
+        \begin{itemize}
+
+            \item<4-> Má v~sobě prvek náhody: umožňuje generovat rozmanité výstupy
+
+            \item<5-> Snaží se vyprodukovat takový výstup, aby
+                \textbf{diskriminátor nepoznal}, jestli, že jde o generovaný
+                příklad
+
+        \end{itemize}
+
+        \column{.45\textwidth}
+        \visible<6->{\textbf{Diskriminátor}}
+
+        \begin{itemize}
+
+            \item<6-> Pracuje s~reálnými data a generovanými daty
+
+            \item<7-> Snaží se naučit \textbf{rozpoznat syntetická a autentická
+                data}
+
+
+        \end{itemize}
+
+    \end{columns}
+
+    \vspace{10pt}
+
+    \tiny Koncept GAN poprvé představil \citet{goodfellow2014generative}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{This person does not exist}
+
+    \centering
+    \includegraphics[width=65pt]{img/person1.jpeg}
+    \includegraphics[width=65pt]{img/person2.jpeg}
+    \includegraphics[width=65pt]{img/person3.jpeg}
+    \includegraphics[width=65pt]{img/person4.jpeg} \\
+    {\tiny Vygenerováno s~pomocí \url{https://thispersondoesnotexist.com/},
+    model z~článku \citet{karras2020analyzing}}
+
+    \includegraphics[scale=.35]{img/gan_birds.png} \\
+    {\tiny Zdroj \citet[obr.\ 5]{zhang2017stack}}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Deepfakes}
+
+    \begin{center}
+
+        {\Large = falešná videa, kam se dosadí tvář jiného člověka} \\
+
+        (pornografie, politická propaganda)
+
+    \end{center}
+
+    \vspace{15pt}
+
+    \visible<2->{Generátor optimalizuje pro dva cíle:}
+
+    \begin{enumerate}
+
+        \item<3-> Model, který rozpoznává obličeje, musí rozpoznat správnou osobu
+
+        \item<4-> Diskriminátor nesmí poznat, co že je to fake
+
+    \end{enumerate}
+
+\end{frame}
 
 \summary{Shrnutí}{%
+
+    AI je leckde, Rada Evropy právě připravuje mezinárodní smlouvu o regulaci
+    -- hodí se vědět, jak věci fungují
+
+    \vskip
+
     \begin{enumerate}
-        \item Advantages of unsupervised methods.
+
+        \item Strong AI (to, co je sci-fi), Weak AI (to, co se děje)
+
+        \item Nejčastěji se AI myslí strojové učení a neuronové sítě
+
+        \item Všechno závisí na datech -- mnoho etických problémů
+
+        \item Ve vidění i v NLP: předtrénované reprezentace \\ \quad +
+            dotrénování na jednotlivé úlohy
+
+        \item Neuronové sítě nemusí jenom ,,papouškovat`` data, mohou se
+            trénovat navzájem
+
     \end{enumerate}
 }
 % ----------------------------------------------------------------------------
@@ -1083,12 +1398,5 @@ Ukázat sprosťárny a nekorektní kecy, které GPT vygeneruje
 %}
 
 \references{odkazy.bib}
-
-%\begin{frame}
-%\frametitle{References}
-%\renewcommand*{\bibfont}{\footnotesize}
-%\printbibliography[heading=none]
-%\end{frame}
-
 
 \end{document}
