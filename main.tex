@@ -1,4 +1,4 @@
-\documentclass[handout,aspectratio=169,dvipsnames]{beamer}
+\documentclass[aspectratio=169,dvipsnames]{beamer}
 
 %\usepackage[czech]{babel}
 \usepackage{polyglossia}
@@ -93,68 +93,9 @@
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Organizace předmětu}
+\include{program_zs_2022}
 
-    \begin{itemize}[<+->]
-
-        \item Úvodní přednáška -- \texbf{teď}
-
-        \begin{itemize}[<+->]
-
-            \item Technický úvod, do je/není AI
-
-            \item Základy strojového učení a neuronových sítí
-
-            \item Ukázky z~počítačového vidění a zpracování jazyka
-
-        \end{itemize}
-
-        \item Přednášky: host mluví na dané téma \\
-            \quad 24.2. \quad 10.3. \quad 24.3. \quad 14.4. \quad 28.4
-
-
-        \item Semináře: téma předchozí přednášky, obvykle založené na čtení
-            nějaké literatury \\
-            \quad 3.3. \quad 17.3. \quad 31.3. \quad 21.4. \quad 5.5.
-
-        \item Na závěr (12.5.) shrnutí a závěrečný test
-
-    \end{itemize}
-
-    \vspace{10pt}
-
-    \centering
-    \visible<8->{\fbox{\begin{minipage}{.9\textwidth}
-        \Large Zápočet: \\ $\bullet$ \textbf{účast} na 4 přednáškách a 4 seminářích (pokud
-            pandemie dovolí) \\ $\bullet$ \textbf{závěrečný test} (pouze informativní)
-    \end{minipage}}}
-
-\end{frame}
 % ----------------------------------------------------------------------------
-
-\begin{frame}{Program}
-
-    \small
-    \begin{tabular}{cl}
-        \toprule
-    Datum   &   Program \\ \midrule
-    17. 2.  & Úvodní přednáška \\ \midrule
-    24. 2.  & Dita Malečková (AI v kontextu umění) \\
-    3. 3.   & Seminář 1 \\ \midrule
-    10. 3.  & David Černý (Ústav státu a práva, Ústav informatiky AV ČR, AI v kontextu etiky) \\
-    17. 3.  & Seminář 2 \\ \midrule
-    24. 3.  & Veronika Macková (FSV UK, AI v kontextu žurnalistiky) \\
-    31. 3.  & Seminář 3 \\ \midrule
-    14. 4.  & Petr Kajzar (1. LF UK, AI v kontextu medicíny) \\
-    21. 4.  & Seminář 4 \\ \midrule
-    28. 4.  & František Štěch (ETF UK, AI v kontextu náboženství) \\
-    5. 5.   & Seminář 5 \\ \midrule
-    12. 5.  & Závěrečné shrnutí a test \\
-    \bottomrule
-    \end{tabular}
-
-
-\end{frame}
 
 \begin{frame}{Materiály k~seminářům}
 
@@ -271,13 +212,13 @@
 
         \begin{itemize}
 
-            \item<2-> Také AGI -- Artifitial General Inteligence
+            \item<2-> Také AGI -- \\ \quad Artifitial General Inteligence
 
             \item<3-> Cílem je obecně \textbf{inteligentní stroj}, který v důsledku
-                toho umí řešit úlohy
+			    toho umí řešit \textbf{všechny úlohy}
 
-            \item<4-> Zajímavé filozofické problémy: Inteligenční singularita?
-                Musela by být AGI vtělená?
+            \item<4-> Zajímavé filozofické problémy: \\ Inteligenční singularita?
+                \\ Musela by být AGI vtělená?
 
         \end{itemize}
 
@@ -294,11 +235,14 @@
             \item<6-> Také Narrow AI
 
             \item<7-> Cílem je řešit \textbf{jednotlivé úlohy}, které vyžadují
-                inteligenci
+					(lidskou) inteligenci
 
             \item<8-> Všechno, o čem bude dnes řeč, je weak AI
 
         \end{itemize}
+
+		Co je inteligence a co je jenom počítání?
+
     \end{columns}
 
 
@@ -324,9 +268,9 @@
 
     \begin{itemize}
 
-        \item Myslí se \textbf{weak AI}
+	    \item Vždy se myslí \textbf{weak AI} {\small (kromě sci-fi)}
 
-        \item Většinou jsou to metody založené na \textbf{strojovém učení} a zpracování
+        \item Většinou jsou to metody založené na \textbf{strojovém učení} a \\ \quad zpracování
             \textbf{hodně dat}
 
         \item Často je to strojové učení pomocí \textbf{neuronových sítí}
@@ -368,7 +312,7 @@
 
     \begin{itemize}
 
-        \item<6-> Máme \textbf{příklady} vstupů a výstupů
+	    \item<6-> Máme \textbf{příklady} vstupů a výstupů a \textbf{metriku} jak dobré je řešení
 
         \item<7-> Nejsme schopni do důsledku napsat návod, jak úlohu řešit
 
@@ -437,7 +381,7 @@
 
     \vspace{1em}
 
-    \visible<2->{Chceme model, co \textbf{generelalizuje} pro nová data.}
+    \visible<2->{Cíl učení = model, který \textbf{generelalizuje} pro nová data.}
 
 \end{frame}
 
@@ -479,7 +423,7 @@
     \end{center}
 
     \visible<2->{
-        \textbf{\Large Přeučení} = model si zapamatuje trénovací data, funguje dobře jenom pro data, co vypadají jako trénovací} \\
+        \textbf{\Large Přeučení} = model si zapamatuje trénovací data, funguje dobře jenom pro data, která vypadají jako trénovací} \\
     \visible<3->{\hfill \Large\bf \ldots nejčastější zdroj chyb a diskriminace}
 
 \end{frame}
@@ -619,7 +563,7 @@
             \visible<4->{
                 \includegraphics[width=350pt]{img/doctor.png}} \\
             \visible<5->{
-                \includegraphics<5->[width=350pt]{img/sexy_doctor.png} \\
+                \includegraphics[width=350pt]{img/sexy_doctor.png} \\
             {\tiny Příklad \citet[obr.\ 6 a 7]{rozhledy}} }
 
     \end{itemize}
@@ -1159,8 +1103,8 @@
     \centering
 
     {\huge
-    Většina state-of-the-art řešení v NLP používá předtrénovaný model
-    dotrénovaný na datech specifických pro úlohu.}
+		Většina state-of-the-art řešení v NLP používá \textbf{předtrénovaný} model
+		\textbf{dotrénovaný} na datech specifických pro úlohu.}
 
     \vspace{30pt}
 
@@ -1169,7 +1113,8 @@
 
     \vspace{10pt}
 
-    Trend vývoje: lepší předtrénované modely, nižší potřeba specifických dat
+	Trend vývoje: lepší předtrénované modely, nižší potřeba specifických dat,
+		few-shot a zero-shot learning
 
 \end{frame}
 
@@ -1198,8 +1143,9 @@
 
             \end{itemize}
 
-            \item GPT-3 je asi nejblíže populárním představám o AI, ale
-            v~praxi nepoužitelný
+	\item Ještě větší modely: Gopher 280B param., 1.9TB textu,  {\small (DeepMind; \citealp{deepmind2021gopher})} , \\ \quad  PaLM 540B param.,  {\small (Google;  \citealp{google2022palm})}
+
+            \item Asi nejblíže populárním představám o AI, ale v~praxi nepoužitelný
 
     \end{itemize}
 
@@ -1270,7 +1216,7 @@
         \item Modely se mohou učit od sebe navzájem
 
         \item Reinforcement learning -- AlphaGo: Model hraje Go s~různými
-            verzemi sebe sama {\tiny \citep{singh2017learning}}
+            verzemi sebe sama \\ {\tiny \citep{singh2017learning}}
 
         \item Zpětný překlad ve strojovém překladu: překlad jednojazyčných
             textů je vstup do překladače na druhou stranu {\tiny \citep{sennrich2016improving}}
@@ -1281,7 +1227,8 @@
 
 \end{frame}
 
-\end{frame}
+% ----------------------------------------------------------------------------
+
 
 \begin{frame}{Generator-discrimitor}
 
@@ -1375,11 +1322,6 @@
 \end{frame}
 
 \summary{Shrnutí}{%
-
-    AI je leckde, Rada Evropy právě připravuje mezinárodní smlouvu o regulaci
-    -- hodí se vědět, jak věci fungují
-
-    \vskip
 
     \begin{enumerate}
 

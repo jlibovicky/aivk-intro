@@ -21,11 +21,12 @@ force: $(FILES)
 	latexmk -pdflatex="$(LATEX) %O %S" -pdf -dvi- -ps- $(NAME)
 
 clean:
-	rm -f $(NAME).{aux,bbl,log,out,pdf}
-	rm -r html
+	rm -f $(NAME).{aux,bbl,log,out,pdf,toc,bcf,blg,fls,nav,snm,fdb_latexmk,run.xml}
 
 %.pdf: %.svg
-	inkscape -A $*.pdf $*.svg
+	#inkscape -A $*.pdf $*.svg
+	inkscape  $*.svg --export-pdf=$*.pdf
+
 
 %.pgf: %.py
 	PYTHONPATH=${PWD}/plots:${PYTHONPATH} python3 $*.py
