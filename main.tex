@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169,dvipsnames]{beamer}
+\documentclass[handout,aspectratio=169,dvipsnames]{beamer}
 
 %\usepackage[czech]{babel}
 \usepackage{polyglossia}
@@ -35,12 +35,12 @@
 \def\courseurl{https://ufal.mff.cuni.cz/AIvK}
 \def\title{Úvodní přednáška}
 \def\subtitle{Co je a není AI, co je strojové učení a neuronové sítě}
-\def\author{Tereza Hanemann, Jindřich Libovický, Rudolf Rosa}
-\def\date{17. února 2022}
+\def\author{Tereza Hanemann, \underline{Jindřich Libovický}, Rudolf Rosa}
+\def\date{6. října 2022}
 \def\licence{cc-by-nc-sa}
 \def\showtitleoneveryframe{}
 %\def\langtech{}
-%\def\shownavigation{}
+\def\shownavigation{}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -105,7 +105,7 @@
 
     \begin{center}
         \tt\Large
-        \fbox{https://ufallab.ms.mff.cuni.cz/$\sim$libovicky/avik}
+        \fbox{https://ufallab.ms.mff.cuni.cz/$\sim$libovicky/aivk}
     \end{center}
 
     \vspace{15pt}
@@ -126,7 +126,7 @@
 
 % ----------------------------------------------------------------------------
 
-\section{Co je umělá inteligence}
+\section[Co je AI]{Co je umělá inteligence}
 
 % ----------------------------------------------------------------------------
 
@@ -155,7 +155,20 @@
 
     \centering\vspace{15pt}
 
-    \visible<5->{Hranice, co je a není AI, se posouvá\ldots}
+    \visible<5->{Hranice, co se považuje AI, se posouvá sem a tam\ldots}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Exponenicálně rostoucí obor}
+
+    \centering
+    \includegraphics[scale=.25]{./img/exp_growth.jpg}
+
+    Počet publikovaných článeků se každé dva roky zdvojnásobí.
+
+    {\footnotesize Zdroj: \citet{krenn2022prediction}}
 
 \end{frame}
 
@@ -241,7 +254,9 @@
 
         \end{itemize}
 
-		Co je inteligence a co je jenom počítání?
+		\vspace{15pt}
+
+			\visible<9->{Co je inteligence a co je jenom počítání?}
 
     \end{columns}
 
@@ -266,12 +281,12 @@
 
     \Large
 
-    \begin{itemize}
+    \begin{itemize}[<+->]
 
-	    \item Vždy se myslí \textbf{weak AI} {\small (kromě sci-fi)}
+        \item Vždy se myslí \textbf{weak AI} {\small (kromě sci-fi)} \\[1em]
 
-        \item Většinou jsou to metody založené na \textbf{strojovém učení} a \\ \quad zpracování
-            \textbf{hodně dat}
+        \item Většinou jsou to metody založené na \textbf{strojovém učení}  \\  \quad a zpracování
+            \textbf{hodně dat} \\[1em]
 
         \item Často je to strojové učení pomocí \textbf{neuronových sítí}
 
@@ -283,7 +298,7 @@
 
 % ----------------------------------------------------------------------------
 
-\section{Strojové učení \& Neuronové sítě}
+\section[Strojové učení]{Strojové učení \& Neuronové sítě}
 
 \begin{frame}{Běžné programování vs.\ strojové učení}
 
@@ -293,7 +308,7 @@
 
         \item<2-> Jsme schopni problém \textbf{formálně popsat} jasnými koncepty
 
-        \item<3-> Program je jednoznačný návod, jak s koncepty zacházet
+        \item<3-> Program je jednoznačný \textbf{návod}, jak s koncepty zacházet
 
     \end{itemize}
 
@@ -538,7 +553,7 @@
 
     \visible<3->{
     {\Large\textbf{Vytěžování existujících databází}} --- neplacená práce
-    uživatelů, neprůhledné využití data
+    uživatelů, neprůhledné využití dat (např. když za služby vyhledavače platíme daty)
     \\ \hfill {\footnotesize \citep{couldry2019costs}}}
 
 \end{frame}
@@ -556,7 +571,7 @@
                 samé vhodné kandidáty, ani si nevšimnu, že jsem nedoporučil
                 jiné vhodné (třeba podle rasy)
             \end{minipage} \\
-            {\tiny \citep{derous2019your,bender2018data}}}
+            \hfill {\tiny \citep{derous2019your,bender2018data}}}
 
         \item<3-> Stereotypy můžou být pro model efektivní způsob optimalizace \\
 
@@ -564,7 +579,7 @@
                 \includegraphics[width=350pt]{img/doctor.png}} \\
             \visible<5->{
                 \includegraphics[width=350pt]{img/sexy_doctor.png} \\
-            {\tiny Příklad \citet[obr.\ 6 a 7]{rozhledy}} }
+            \hfill {\tiny Příklad \citet[obr.\ 6 a 7]{rozhledy}} }
 
     \end{itemize}
 
@@ -575,9 +590,9 @@
 
 % ----------------------------------------------------------------------------
 
-\section{Strojové vidění}
+\section{Počítačové vidění}
 
-\begin{frame}{Úlohy strojového vidění}
+\begin{frame}{Úlohy počítačového vidění}
 
     \vspace{-5pt}
     \begin{center}
@@ -599,7 +614,10 @@
         \column{.3\textwidth}
         \centering \textbf{Poloha lidského těla} \\[1ex]
         \includegraphics[width=.98\textwidth]{img/pose_detection.png} \\
-        {\tiny Zdroj: \url{https://towardsdatascience.com/realtime-multiple-person-2d-pose-estimation-using-tensorflow2-x-93e4c156d45f}}
+
+        \begin{minipage}{\textwidth}
+        \tiny Zdroj: \href{https://towardsdatascience.com/realtime-multiple-person-2d-pose-estimation-using-tensorflow2-x-93e4c156d45f}{\tt https://towardsdatascience.com/\\ realtime-multiple-person-2d-pose- \\ estimation-using-tensorflow2- \\ x-93e4c156d45f}
+        \end{minipage}
 
     \end{columns}}
 
@@ -611,7 +629,7 @@
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Úlohy strojového vidění}
+\begin{frame}{Úlohy počítačového vidění}
 
     \visible<1->{\begin{center}
         \large \ldots ale i vyžadující expertní znalost.
@@ -765,7 +783,7 @@
 
 % ----------------------------------------------------------------------------
 
-\section{Zpracování přirozeného jazyka}
+\section[Zpracování jazyka]{Zpracování přirozeného jazyka}
 
 % ----------------------------------------------------------------------------
 
@@ -1318,6 +1336,18 @@
         \item<4-> Diskriminátor nesmí poznat, co že je to fake
 
     \end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Co se nevešlo \ldots}
+
+    \begin{itemize}
+
+        \item Difusion modely pro generování obrázků (DALLE-2)
+
+        \item AlphaFold: predikce strutury proteinů
+
+    \end{itemize}
 
 \end{frame}
 
