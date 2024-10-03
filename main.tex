@@ -93,7 +93,30 @@
 
 % ----------------------------------------------------------------------------
 
-\include{program_ls_2024}
+\include{program_zs_2024}
+
+\begin{frame}{Domácí příprava}
+
+    \begin{itemize}[<+->]
+
+        \item Konkrétní \textbf{zadání během pátku} po přednášce
+
+        \item Četba, otázky na rozmyšlení, drobnější aktivity
+
+        \item Odpovědi/výsledky \textbf{posílat prostřednictím formuláře}
+
+        \item Obvyklý deadline je \textbf{středa 12:00} následujícího týdne
+
+    \end{itemize}
+
+    \vspace{10pt}
+
+    \centering
+    \visible<5->{\fbox{\begin{minipage}{.9\textwidth}
+        \centering\Large Na zápočet je potřeba odevzdat alespoň 4$\times$ za semestr.
+     \end{minipage}}}
+
+\end{frame}
 
 % ----------------------------------------------------------------------------
 
@@ -379,15 +402,7 @@
 \path[normal arrow] (x) -- (m);
 \path[normal arrow] (m) -- (y);
 
-\node[] (p) at (7, -1.5) {předpoklady};
-\node[] (po) at (7, -8.5) {požadavky};
-
-\path[draw, triangle 45-triangle 45, dashed] (d) -- (p);
-\path[normal arrow] (p) -- (a);
-\path[draw, triangle 45-triangle 45, dashed] (po) -- (m);
-\path[normal arrow] (po) -- (a);
-
-\node[small box = 6em] (meta) at (7, -5) {metaparametry};
+\node[small box = 6em] (meta) at (7, -5) {hyperparametry};
 
 \node[small box = 6em] (par-alg) at (14, -5) {parametery};
 \node[small box = 6em] (par) at (14, -6) {algoritmus};
@@ -762,7 +777,7 @@
 
     \begin{itemize}[<+->]
 
-        \item Založeno na lexikální databázi z 80.\ let -- reflektuje o čem se
+        \item Založeno na lexikální databázi z 90.\ let -- reflektuje o čem se
             mluvilo v USA před 40 lety
 
         \item Není kulturně neutrální: anglické slovo \emph{shovel} v~severní
@@ -866,6 +881,7 @@
         }
 
         \visible<5->{
+        \node[minimum width=60pt,minimum height=60pt,right=30pt of denoiser,opacity=0.2,inner sep=0pt] {\includegraphics[width=60pt]{img/die_maus.jpg}};
         \node[left=0pt of denoiser] {\scalebox{3.2}{\huge (}};
         \node[right=0pt of better] {\scalebox{3.2}{\huge )}$N\times$};
         \draw[->] (better.south) to[out=200,in=-90] (denoiser.south);
@@ -875,7 +891,8 @@
     \end{center}
 
     \vspace{10pt}
-    \visible<6->{Původně malý obrázek -- dekonvoluční modely pro zvětšování}
+    \visible<6->{Původně malý obrázek -- dekonvoluční modely pro zvětšování} \\
+    \visible<7->{Dnešní diffusion modely pracují v latentním prostoru}
 
 \end{frame}
 
@@ -1034,26 +1051,26 @@
     \end{columns}
 
     \vspace{10pt}
-    \tiny Transformer původně představili \citet{vaswani2017attention}
+    \visible<4->{\begin{center}Transformer původně představili \citet{vaswani2017attention} původně pro strojový překlad.\end{center}}
 
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Encoder-decoder: Strojový překlad}
-
-    \begin{center}
-    \includegraphics[scale=0.55]{img/encoder_decoder.pdf}
-    \end{center}
-
-    \vspace{10pt}
-
-    \centering
-    \visible<2->{
-        Dekodér sbírá informace \textbf{z~předchozích slov} a \textbf{z~enkodéru}} \\
-    \tiny Koncept enkodéru-dekodéru: \citep{kalchbrenner2013recurrent,sutskever2014sequence,bahdanaou2015neural}
-
-\end{frame}
+%\begin{frame}{Encoder-decoder: Strojový překlad}
+%
+%    \begin{center}
+%    \includegraphics[scale=0.55]{img/encoder_decoder.pdf}
+%    \end{center}
+%
+%    \vspace{10pt}
+%
+%    \centering
+%    \visible<2->{
+%        Dekodér sbírá informace \textbf{z~předchozích slov} a \textbf{z~enkodéru}} \\
+%    \tiny Koncept enkodéru-dekodéru: \citep{kalchbrenner2013recurrent,sutskever2014sequence,bahdanaou2015neural}
+%
+%\end{frame}
 
 % ----------------------------------------------------------------------------
 %\begin{frame}{Zkreslení z dat}
@@ -1195,7 +1212,9 @@
 		\item Neplatí, že čím větší model, tím lepší -- scaling laws ukazují,
 				že menší model, co se déle trénuje, může být lepší
 
-		\item Open source LLaMA od Facebooku má při 30G param. podobné výsledky jako GPT-3
+		\item LLaMA od Facebooku má při 30B param. podobné výsledky jako GPT-3
+
+        \item Nejlepší open-weight model dnes LLaMA3.1 od Meta má 405B parametrů
 
     \end{itemize}
 
@@ -1226,16 +1245,15 @@
 \begin{frame}{Scaling Laws}
 
     \begin{center}
-    Experimenty Chinchila Google Deepmindu: delší trénování může kompenzovat počet parametrů
-
-    \begin{minipage}{.9\textwidth}\tiny \bibentry{hoffmann2022training}, Figure~1\end{minipage}
+    Experimenty Chinchila Google DeepMindu: delší trénování může kompenzovat počet parametrů
+    \citep[Figure~1]{hoffmann2022training}
 
     \vspace{5pt}
     \includegraphics[scale=.6]{img/chinchilla.pdf}
 
     \vspace{10pt}
 
-    Používá LLaMA a LLaMA 2 od Meta: Srovnatelné GPT-3, ale má jenom 30B parametrů \\
+    Používá LLaMA a LLaMA 2 od Meta: Srovnatelné jako GPT-3, ale má jenom 30B parametrů \\
     \citep{touvron2023llama}
 
     \end{center}
@@ -1289,10 +1307,6 @@
         GPT-2 navrhuje pokračování textu: \\
         \includegraphics[scale=.42]{./img/hitler.png}}
 
-    \visible<4->{
-        \includegraphics[scale=.42]{./img/america.png}}
-
-
     {\tiny Vytvořeno pomocí \url{https://transformer.huggingface.co/doc/gpt2-large}, model: \citet{radford2019language}}
 
 
@@ -1314,12 +1328,12 @@
 
         \item Společnost OpenAI spustila ChatGPT v~prosinci 2022, GPT-4 březen 2023
 
-		\item Komerční (Perplexity AI, Claude AI) a open source alternativy (Open Assistant, LLaMA)
+		\item Uzavřené komerční modely (Gemini, Claude AI) a trochu ovevřenější modely (LLaMA3, Mistral)
 
         \item Založený na jazykovém modelu dotrénovaný pro ,,řešení úloh`` podle instrukcí
 
-        \item Výborně ovládá angličtinu (a dobře další jazyky), encyklopedické
-            znalolsti, znalost programování
+        \item Výborně ovládá angličtinu (a dobře další jazyky), sem tam nějaké encyklopedické
+            znalosti, znalost programování
 
     \end{itemize}
 
@@ -1389,157 +1403,20 @@
         \item Trénovací data se sbírala v~chudých zemích za nízkou mzdu {\tiny \\
             \url{https://time.com/6247678/openai-chatgpt-kenya-workers}}
 
-		\item K~odpovědím neuvádí zdroje, často jsou špatně (ale jsou systémy,
-				co jsou vyhledávač + generátor odpovědi)
+		\item Z principu není možné znát zdroj informací, které říká {\small (ani v~případě Retrieval Augmented Generation)}
+
+        \item Kdo neplatí, daruje data OpenAI/Googlu/\ldots
 
     \end{itemize}
 
-    \vspace{10pt}
+    %\vspace{10pt}
 
-    Více otázek a odpovědí má můj blog: \url{https://jlibovicky.github.io//2023/02/07/Otazky-a-odpovedi-o-ChatGPT-a-jazykovych-modelech.html}
+    %Více otázek a odpovědí má můj blog: \url{https://jlibovicky.github.io//2023/02/07/Otazky-a-odpovedi-o-ChatGPT-a-jazykovych-modelech.html}
 
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
-
-%\section{Zpětnovazebné učení}
-
-% ----------------------------------------------------------------------------
-
-%\section{Modely, co se učí samy}
-%
-%
-%\begin{frame}{Modely, co se učí samy}
-%
-%    \begin{itemize}[<+->]
-%
-%        \item Většina, co jsme viděli, trénované z~párů \emph{vstup-výstup}
-%            \\ \quad\emph{supervised learning} (učení s~učitelem)
-%
-%        \item Modely se mohou učit od sebe navzájem
-%
-%        \item Reinforcement learning -- AlphaGo: Model hraje Go s~různými
-%            verzemi sebe sama \\ {\tiny \citep{singh2017learning}}
-%
-%        \item Zpětný překlad ve strojovém překladu: překlad jednojazyčných
-%            textů je vstup do překladače na druhou stranu {\tiny \citep{sennrich2016improving}}
-%
-%        \item Generativní adversariální sítě\ldots
-%
-%    \end{itemize}
-%
-%\end{frame}
-%
-%% ----------------------------------------------------------------------------
-%
-%
-%\begin{frame}{Generator-discrimitor}
-%
-%    \begin{itemize}[<+->]
-%
-%        \item Většina, co jsme viděli, trénované z~párů \emph{vstup-výstup}
-%
-%        \item Hrají proti sobě dvě neuronové sítě: {\bf generátor} a {\bf
-%            diskriminátor}
-%
-%    \end{itemize}
-%
-%    \vspace{10pt}
-%
-%    \begin{columns}[t]
-%        \column{.45\textwidth}
-%        \visible<3->{\textbf{Generátor}}
-%
-%        \begin{itemize}
-%
-%            \item<4-> Má v~sobě prvek náhody: umožňuje generovat rozmanité výstupy
-%
-%            \item<5-> Snaží se vyprodukovat takový výstup, aby
-%                \textbf{diskriminátor nepoznal}, jestli, že jde o generovaný
-%                příklad
-%
-%        \end{itemize}
-%
-%        \column{.45\textwidth}
-%        \visible<6->{\textbf{Diskriminátor}}
-%
-%        \begin{itemize}
-%
-%            \item<6-> Pracuje s~reálnými data a generovanými daty
-%
-%            \item<7-> Snaží se naučit \textbf{rozpoznat syntetická a autentická
-%                data}
-%
-%
-%        \end{itemize}
-%
-%    \end{columns}
-%
-%    \vspace{10pt}
-%
-%    \tiny Koncept GAN poprvé představil \citet{goodfellow2014generative}
-%
-%\end{frame}
-%
-%% ----------------------------------------------------------------------------
-%
-%\begin{frame}{This person does not exist}
-%
-%    \centering
-%    \includegraphics[width=65pt]{img/person1.jpeg}
-%    \includegraphics[width=65pt]{img/person2.jpeg}
-%    \includegraphics[width=65pt]{img/person3.jpeg}
-%    \includegraphics[width=65pt]{img/person4.jpeg} \\
-%    {\tiny Vygenerováno s~pomocí \url{https://thispersondoesnotexist.com/},
-%    model z~článku \citet{karras2020analyzing}}
-%
-%    \includegraphics[scale=.35]{img/gan_birds.png} \\
-%    {\tiny Zdroj \citet[obr.\ 5]{zhang2017stack}}
-%
-%\end{frame}
-%
-%% ----------------------------------------------------------------------------
-%
-%\begin{frame}{Deepfakes}
-%
-%    \begin{center}
-%
-%        {\Large = falešná videa, kam se dosadí tvář jiného člověka} \\
-%
-%        (pornografie, politická propaganda)
-%
-%    \end{center}
-%
-%    \vspace{15pt}
-%
-%    \visible<2->{Generátor optimalizuje pro dva cíle:}
-%
-%    \begin{enumerate}
-%
-%        \item<3-> Model, který rozpoznává obličeje, musí rozpoznat správnou osobu
-%
-%        \item<4-> Diskriminátor nesmí poznat, co že je to fake
-%
-%    \end{enumerate}
-%
-%\end{frame}
-
-% ----------------------------------------------------------------------------
-
-%\begin{frame}{Co se nevešlo \ldots}
-%
-%    \begin{itemize}
-%
-%        \item Difusion modely pro generování obrázků (DALLE-2)
-%
-%        \item AlphaFold: predikce strutury proteinů
-%
-%    \end{itemize}
-%
-%\end{frame}
-
-% ----------------------------------------------------------------------------
 
 \summary{Shrnutí}{%
 
