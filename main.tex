@@ -93,7 +93,7 @@
 
 % ----------------------------------------------------------------------------
 
-\include{program_zs_2024}
+\include{program_ls_2025}
 
 \begin{frame}{Domácí příprava}
 
@@ -306,7 +306,7 @@
 
     \begin{itemize}[<+->]
 
-        \item Vždy se myslí \textbf{weak AI} {\small (kromě sci-fi)} \\[1em]
+        \item Vždy se myslí \textbf{weak AI} {\small (kromě sci-fi a některých dnešních diskuzí)} \\[1em]
 
         \item Většinou jsou to metody založené na \textbf{strojovém učení}  \\  \quad a zpracování
             \textbf{hodně dat} \\[1em]
@@ -796,105 +796,6 @@
 %\begin{frame}{Rozpoznávání obličejů}
 %\end{frame}
 
-\begin{frame}{Difussion modely pro generování obrázků}
-
-    \centering
-
-    Známé modely jako \textbf{DALLE-2} \textbf{Stable Diffusion} {\tiny \citep{ramesch2022hierarchical,rombach2022stableDifussion}}
-
-    \begin{columns}[t]
-        \column{.48\textwidth}
-
-            \centering
-            \includegraphics[width=.7\textwidth]{img/stable_dif_keenu.jpg} \\
-
-            \scriptsize Keanu Reeves portrait photo of a asia old
-            warrior chief, tribal panther make up, blue on red, side profile,
-            looking away, serious eyes, 50mm portrait photography
-        \column{.48\textwidth}
-            \centering
-
-            \includegraphics[width=.7\textwidth]{img/stable_dif_poison.jpg} \\
-
-            \scriptsize Full page concept design how to craft life Poison,
-            intricate details,infographic of alchemical, diagram of how to make
-            potions, captions, directions, ingredients
-
-    \end{columns}
-
-    \tiny Příklady obrázků vygenerovaných pomocí Stable Diffusion, zdroj: \url{https://mpost.io/best-100-stable-diffusion-prompts-the-most-beautiful-ai-text-to-image-prompts}
-
-\end{frame}
-
-% ----------------------------------------------------------------------------
-
-\begin{frame}{Difussion model}
-
-    \begin{center}
-        \includegraphics[width=10cm]{img/difusion.png} \\ \tiny \citep[Figure 6]{ho2020denoising}
-    \end{center}
-
-    \begin{itemize}[<+->]
-
-        \item Založeno na odstraňování šumu z~obrázku
-
-        \item Začátek -- náhodný šum
-
-        \item V~každém kroku konvoluční síť odstraní trochu šumu
-
-        \item Vygenerovat trénovací data je triviální: postupně se přidává šum k obrázku
-
-    \end{itemize}
-
-    \visible<5->{
-    \begin{center}
-        Původní koncept pochází z~UC Berkley, preprint z~června 2020
-    \end{center}}
-
-\end{frame}
-
-
-\begin{frame}{Generování obrázku z~promptu}
-
-    \begin{center}
-    \begin{tikzpicture}[>=latex]
-
-        \node (prompt) {Textual prompt};
-
-        \visible<2->{
-        \node[draw,fill=ForestGreen!40,right=30pt of prompt] (clip) {\begin{minipage}{65pt}\centering Text \\ representaiton\end{minipage}};
-        \draw[->] (prompt) -- (clip);
-        }
-
-        \node[below=20pt of prompt] (noise) {\includegraphics[width=60pt]{img/noise.png}};
-
-        \visible<3->{
-        \node[right=80pt of noise,draw,fill=Orange!60] (denoiser) {\begin{minipage}{65pt}\centering Denoising\end{minipage}};
-        \draw[->] (noise) -- (denoiser);
-        \draw[->] (clip.east) to[out=0,in=90] (denoiser.north);
-        }
-
-        \visible<4->{
-        \node[minimum width=60pt,minimum height=60pt,right=30pt of denoiser,opacity=0.2,inner sep=0pt] {\includegraphics[width=60pt]{img/noise.png}};
-        \node[draw, minimum width=60pt,minimum height=60pt,right=30pt of denoiser] (better) {\scalebox{2}{\huge\color{white}\bf ?}};
-        \draw[->] (denoiser) -- (better);
-        }
-
-        \visible<5->{
-        \node[minimum width=60pt,minimum height=60pt,right=30pt of denoiser,opacity=0.2,inner sep=0pt] {\includegraphics[width=60pt]{img/die_maus.jpg}};
-        \node[left=0pt of denoiser] {\scalebox{3.2}{\huge (}};
-        \node[right=0pt of better] {\scalebox{3.2}{\huge )}$N\times$};
-        \draw[->] (better.south) to[out=200,in=-90] (denoiser.south);
-        }
-
-    \end{tikzpicture}
-    \end{center}
-
-    \vspace{10pt}
-    \visible<6->{Původně malý obrázek -- dekonvoluční modely pro zvětšování} \\
-    \visible<7->{Dnešní diffusion modely pracují v latentním prostoru}
-
-\end{frame}
 
 % ----------------------------------------------------------------------------
 
@@ -1107,56 +1008,56 @@
     \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Předtrénování: Masked Language Model}
-
-    \centering
-    \fbox{\large
-    \colorbox{lightgray}{All}
-    \colorbox{lightgray}{human}
-    \colorbox{lightgray}{being}
-    \colorbox{lightgray}{are}
-    \colorbox{lightgray}{born}
-    \only<1>{\colorbox{lightgray}{free}}%
-    \only<2>{\colorbox{GreenYellow}{free}}%
-    \only<3>{\colorbox{Rhodamine!30}{\texttt{MASK}}}%
-    \only<4>{\colorbox{Dandelion}{hairy}}%
-    \only<5->{\colorbox{GreenYellow}{free}}
-    \colorbox{lightgray}{and}
-    \colorbox{lightgray}{equal}
-    \colorbox{lightgray}{in}
-    \colorbox{lightgray}{dignity}
-    \colorbox{lightgray}{and}
-    \colorbox{lightgray}{rights}}
-
-    \vspace{20pt}
-
-    \begin{enumerate}
-
-        \item<2-> Náhodně vybereme slovo $\rightarrow$
-            \colorbox{GreenYellow}{free}
-
-        \item<3-> S~pravděpodobností 80\% ho nahradíme značku
-            \colorbox{Rhodamine!30}{\texttt{MASK}}
-
-        \item<4-> S~pravděpodobností 10\% ho nahradíme náhodným slovem $\rightarrow$
-            \colorbox{Dandelion}{hairy}
-
-        \item<5-> S~pravděpodobností 10\% ho necháme, jak je $\rightarrow$
-            \colorbox{GreenYellow}{free}
-
-    \end{enumerate}
-
-		\vspace{10pt}
-
-    \visible<6->{
-    Model se snaží uhádnout chybějící slovo \colorbox{GreenYellow}{free}}
-    \visible<7->{
-    \ldots aby to dokázal musí nějak ,,rozumět'' zbytku věty.}
-
-    \vspace{20pt}
-    \tiny Myšlenka Masked Language model, viz. \citet{devlin2019bert}
-
-\end{frame}
+%\begin{frame}{Předtrénování: Masked Language Model}
+%
+%    \centering
+%    \fbox{\large
+%    \colorbox{lightgray}{All}
+%    \colorbox{lightgray}{human}
+%    \colorbox{lightgray}{being}
+%    \colorbox{lightgray}{are}
+%    \colorbox{lightgray}{born}
+%    \only<1>{\colorbox{lightgray}{free}}%
+%    \only<2>{\colorbox{GreenYellow}{free}}%
+%    \only<3>{\colorbox{Rhodamine!30}{\texttt{MASK}}}%
+%    \only<4>{\colorbox{Dandelion}{hairy}}%
+%    \only<5->{\colorbox{GreenYellow}{free}}
+%    \colorbox{lightgray}{and}
+%    \colorbox{lightgray}{equal}
+%    \colorbox{lightgray}{in}
+%    \colorbox{lightgray}{dignity}
+%    \colorbox{lightgray}{and}
+%    \colorbox{lightgray}{rights}}
+%
+%    \vspace{20pt}
+%
+%    \begin{enumerate}
+%
+%        \item<2-> Náhodně vybereme slovo $\rightarrow$
+%            \colorbox{GreenYellow}{free}
+%
+%        \item<3-> S~pravděpodobností 80\% ho nahradíme značku
+%            \colorbox{Rhodamine!30}{\texttt{MASK}}
+%
+%        \item<4-> S~pravděpodobností 10\% ho nahradíme náhodným slovem $\rightarrow$
+%            \colorbox{Dandelion}{hairy}
+%
+%        \item<5-> S~pravděpodobností 10\% ho necháme, jak je $\rightarrow$
+%            \colorbox{GreenYellow}{free}
+%
+%    \end{enumerate}
+%
+%		\vspace{10pt}
+%
+%    \visible<6->{
+%    Model se snaží uhádnout chybějící slovo \colorbox{GreenYellow}{free}}
+%    \visible<7->{
+%    \ldots aby to dokázal musí nějak ,,rozumět'' zbytku věty.}
+%
+%    \vspace{20pt}
+%    \tiny Myšlenka Masked Language model, viz. \citet{devlin2019bert}
+%
+%\end{frame}
 
 % ----------------------------------------------------------------------------
 
@@ -1213,8 +1114,6 @@
 				že menší model, co se déle trénuje, může být lepší
 
 		\item LLaMA od Facebooku má při 30B param. podobné výsledky jako GPT-3
-
-        \item Nejlepší open-weight model dnes LLaMA3.1 od Meta má 405B parametrů
 
     \end{itemize}
 
@@ -1396,26 +1295,72 @@
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Problémy ChatGPT}
+\begin{frame}{Přemýšlející modely}
 
-    \begin{itemize}
+    \begin{center}
+        Chain of Thought Prompting Elicits Reasoning in Large Language Models, \citet{wei2022cot}
+    \end{center}
 
-        \item Trénovací data se sbírala v~chudých zemích za nízkou mzdu {\tiny \\
-            \url{https://time.com/6247678/openai-chatgpt-kenya-workers}}
+    \begin{columns}
+        \column{.45\textwidth}
+        \includegraphics[width=\textwidth]{img/cot.png}
 
-		\item Z principu není možné znát zdroj informací, které říká {\small (ani v~případě Retrieval Augmented Generation)}
+        \column{.45\textwidth}
+        \begin{itemize}
 
-        \item Kdo neplatí, daruje data OpenAI/Googlu/\ldots
+            \item<2-> Promptuju tak, aby model nejdřív generoval hypotézy a zdůvodnění a na konci až odpověď
 
-    \end{itemize}
+            \item<3-> Mohu dotrévat model tak, aby to dělal vždy
 
-    %\vspace{10pt}
+        \end{itemize}
 
-    %Více otázek a odpovědí má můj blog: \url{https://jlibovicky.github.io//2023/02/07/Otazky-a-odpovedi-o-ChatGPT-a-jazykovych-modelech.html}
+        \visible<4->{\begin{center}
+
+            $\rightarrow$ modely jako o1, o3, DeepSeek R1
+
+        \end{center}}
+
+    \end{columns}
 
 \end{frame}
 
+
+%\begin{frame}{Problémy ChatGPT}
+%
+%    \begin{itemize}
+%
+%        \item Trénovací data se sbírala v~chudých zemích za nízkou mzdu {\tiny \\
+%            \url{https://time.com/6247678/openai-chatgpt-kenya-workers}}
+%
+%		\item Z principu není možné znát zdroj informací, které říká {\small (ani v~případě Retrieval Augmented Generation)}
+%
+%        \item Kdo neplatí, daruje data OpenAI/Googlu/\ldots
+%
+%    \end{itemize}
+%
+%    %\vspace{10pt}
+%
+%    %Více otázek a odpovědí má můj blog: \url{https://jlibovicky.github.io//2023/02/07/Otazky-a-odpovedi-o-ChatGPT-a-jazykovych-modelech.html}
+%
+%\end{frame}
+
 % ----------------------------------------------------------------------------
+
+\begin{frame}{O čem se mluví v~souvislosti s~LLM}
+    \begin{itemize}[<+->]
+
+        \item Etické aspekty vývoje (získávání dat, přírodní zdroje)
+
+        \item Nízká interpretovatelnost modelů
+
+        \item Čí (pokud vůbec něčí) hodnoty modely reprezentují?
+
+        \item Dopady na trh práce, vzdělání, politiku
+
+        \item Technologická (ne)závislost Evropy na USA a Číně
+
+    \end{itemize}
+\end{frame}
 
 
 \summary{Shrnutí}{%
@@ -1424,12 +1369,14 @@
 
         \item Strong AI (to, co je sci-fi), Weak AI (to, co se děje)
 
-        \item Nejčastěji se AI myslí strojové učení a neuronové sítě
+        \item Technicky: Nejčastěji se AI myslí strojové učení a neuronové sítě
+
+        \item Společensky: AI většinou znamenají LLM a jejich aplikace
 
         \item Všechno závisí na datech -- mnoho etických problémů
 
-        \item Ve vidění i v NLP: předtrénované reprezentace \\ \quad +
-            dotrénování na jednotlivé úlohy
+        %\item Ve vidění i v NLP: předtrénované reprezentace \\ \quad +
+        %    dotrénování na jednotlivé úlohy
 
         %\item Neuronové sítě nemusí jenom ,,papouškovat`` data, mohou se
         %    trénovat navzájem
