@@ -1,0 +1,275 @@
+% ----------------------------------------------------------------------------
+\section[Zpracování jazyka]{Zpracování přirozeného jazyka}
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Co je zpracování přirozeného jazyka}
+
+    \begin{center}
+
+        \Large Úlohy, pro jejichž řešení je potřeba (do nějaké míry) \\ \textbf{rozumět
+        lidskému jazyku}
+
+    \end{center}
+
+    \begin{itemize}[<+->]
+
+        \item<2-> základní řešení lze obvykle jednoduše naprogramovat
+
+        \item<3-> pro zvýšení úspěšnosti jsou potřeba stále složitější pravidla
+
+        \item<4-> od určité úrovně si neporadíme bez strojového učení
+
+    \end{itemize}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Vyhledávání odpovědí na otázky}
+
+    \centering
+    \includegraphics[scale=.26]{img/qa.png} \\
+    {\tiny Screenhot z~dema Allen Institute for AI \url{https://demo.allennlp.org/reading-comprehension/transformer-qa}}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Kontrola pravopisu}
+
+    \centering
+    \includegraphics[scale=.3]{img/grammarly.png} \\
+    {\tiny Zdroj: Webová reklama grammarly.com}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Strojový překlad}
+
+    \centering
+    \includegraphics[scale=.4]{img/lindat.png} \\
+    {\tiny Zdroj: Překladač CUBBIT \url{https://lindat.mff.cuni.cz/services/translation} \citep{popel2020transforming}}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Entity extraction}
+
+    \includegraphics[scale=.4]{./img/mona_lisa.png} \\
+    {\tiny Zdroj: \url{https://dandelion.eu/semantic-text/entity-extraction-demo}}
+
+    \vspace{10pt}
+
+    \visible<2->{Podúlohy:}
+    \begin{enumerate}
+
+        \item<3-> Named entity recognition: nalézt v~textu řetězce, co obsahují
+            pojmenované entity
+
+        \item<4-> Entity linking: co entity znamenají (první pád, odkaz do
+            databáze/na Wikipedii)
+
+    \end{enumerate}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Koncept embeddingu}
+
+    \begin{columns}
+
+    \column{.45\textwidth}
+    \begin{itemize}[<+->]
+
+        \item neuronové sítě potřebují spojité vstupy
+
+        \item one-hot vektor: očíslujeme slova, 0/1 indikuje slovo \\[1em]
+            \scalebox{.9}{\input{img/onehot.tex}}
+
+        \item první vrstva = násobení maticí
+
+    \end{itemize}
+    \column{.45\textwidth}
+
+        \visible<4->{
+        \centering
+        \scalebox{4}{\rotatebox{-90}{\Huge $\Rsh$}}
+
+        \vspace{5pt}
+
+        {\Large
+        Každé \textbf{slovo} (nebo jiná jednotka) je reprezentovaná mnohodimenzionálním
+        \textbf{vektorem}}}
+
+        \vspace{15pt}
+
+        \begin{itemize}
+
+            \item<5-> učí se ,,mimochodem`` z dat
+
+            \item<6-> mají zajímavé vlastnosti
+
+        \end{itemize}
+
+    \end{columns}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Ukázka z překladače}
+    \hspace*{-10pt}\includegraphics{./plots/tsne.pdf} \\
+    \tiny Zdroj: \citet{rozhledy}
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Princip transformeru}
+
+    \begin{columns}
+    \column{.45\textwidth}
+
+        \scalebox{.8}{\input{img/bipartite.tex}}
+
+    \column{.45\textwidth}
+        \begin{itemize}[<+->]
+
+            \item Mezi klasickými vrstvami tzv. \textbf{self-attention}
+
+            \item Každé slovo se ,,podívá'' na ostatní slova a vezme si z~něj
+                relevantní informace
+
+            \item Na začátku: vektor reprezentuje \textbf{izolované} slovo \\
+                Na konci: vektor reprezentuje slovo \textbf{v~kontextu} věty
+
+        \end{itemize}
+
+    \end{columns}
+
+    \vspace{10pt}
+    \visible<4->{\begin{center}Transformer původně představili \citet{vaswani2017attention} původně pro strojový překlad.\end{center}}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+%\begin{frame}{Encoder-decoder: Strojový překlad}
+%
+%    \begin{center}
+%    \includegraphics[scale=0.55]{img/encoder_decoder.pdf}
+%    \end{center}
+%
+%    \vspace{10pt}
+%
+%    \centering
+%    \visible<2->{
+%        Dekodér sbírá informace \textbf{z~předchozích slov} a \textbf{z~enkodéru}} \\
+%    \tiny Koncept enkodéru-dekodéru: \citep{kalchbrenner2013recurrent,sutskever2014sequence,bahdanaou2015neural}
+%
+%%\end{frame}
+%
+% ----------------------------------------------------------------------------
+%\begin{frame}{Zkreslení z dat}
+%\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Předtrénované modely v NLP}
+
+    \centering
+    \begin{tikzpicture}
+
+            \visible<3->{\draw[dashed,Gray] (0, -100pt) -- (0, 100pt);}
+
+            \node[draw,fill=Orange!80,inner sep=15pt] (bert) {\begin{tabular}{c}Language \\ model\end{tabular}};
+
+            \visible<2->{
+            \node (pre) [left=50pt of bert.west] {\large\bf 1. Pre-training};
+            \node (pre2) [below=0pt of pre.south] {\small (jednou, na velkých datech, trvá dlouho)};
+            \node[draw,ellipse,inner sep=1pt,fill=Gray!20] (unlabeled) [above left=30pt and 30pt of bert.north west] {\begin{tabular}{c}prostý \\ text\end{tabular}};
+            \draw[->] (unlabeled.east) to[out=0,in=90] (bert.north);
+            \node[draw,ellipse,inner sep=3pt,fill=Gray!20] (mlm) [below left=30pt and 30pt of bert.south west] {\begin{tabular}{c}masked LM  \\ \hline causal LM\end{tabular}};
+            \draw[->] (bert.south) to[out=270,in=0] (mlm.east);}
+
+            \visible<3->{
+            \node (fine) [right=50pt of bert.east] {\large\bf 2. Finetuning};
+            \node (fine2) [below=0pt of fine.south] {\small (malá data, rychle)};
+            \node[draw,ellipse,inner sep=1pt,fill=Dandelion] (labeled) [above right=30pt and 30pt of bert.north east] {\begin{tabular}{c}data pro \\ specifickou \\ úlohu\end{tabular}};
+            \draw[->] (labeled.west) to[out=180,in=90] (bert.north);
+            \node[draw,ellipse,inner sep=3pt,fill=Dandelion] (loss) [below right=30pt and 30pt of bert.south east] {\begin{tabular}{c}task-specific \\ objective\end{tabular}};
+                    \draw[->] (bert.south) to[out=270,in=180] (loss.west);}
+
+
+    \end{tikzpicture}
+\end{frame}
+
+%\begin{frame}{Předtrénování: Masked Language Model}
+%
+%    \centering
+%    \fbox{\large
+%    \colorbox{lightgray}{All}
+%    \colorbox{lightgray}{human}
+%    \colorbox{lightgray}{being}
+%    \colorbox{lightgray}{are}
+%    \colorbox{lightgray}{born}
+%    \only<1>{\colorbox{lightgray}{free}}%
+%    \only<2>{\colorbox{GreenYellow}{free}}%
+%    \only<3>{\colorbox{Rhodamine!30}{\texttt{MASK}}}%
+%    \only<4>{\colorbox{Dandelion}{hairy}}%
+%    \only<5->{\colorbox{GreenYellow}{free}}
+%    \colorbox{lightgray}{and}
+%    \colorbox{lightgray}{equal}
+%    \colorbox{lightgray}{in}
+%    \colorbox{lightgray}{dignity}
+%    \colorbox{lightgray}{and}
+%    \colorbox{lightgray}{rights}}
+%
+%    \vspace{20pt}
+%
+%    \begin{enumerate}
+%
+%        \item<2-> Náhodně vybereme slovo $\rightarrow$
+%            \colorbox{GreenYellow}{free}
+%
+%        \item<3-> S~pravděpodobností 80\% ho nahradíme značku
+%            \colorbox{Rhodamine!30}{\texttt{MASK}}
+%
+%        \item<4-> S~pravděpodobností 10\% ho nahradíme náhodným slovem $\rightarrow$
+%            \colorbox{Dandelion}{hairy}
+%
+%        \item<5-> S~pravděpodobností 10\% ho necháme, jak je $\rightarrow$
+%            \colorbox{GreenYellow}{free}
+%
+%    \end{enumerate}
+%
+%		\vspace{10pt}
+%
+%    \visible<6->{
+%    Model se snaží uhádnout chybějící slovo \colorbox{GreenYellow}{free}}
+%    \visible<7->{
+%    \ldots aby to dokázal musí nějak ,,rozumět'' zbytku věty.}
+%
+%    \vspace{20pt}
+%    \tiny Myšlenka Masked Language model, viz. \citet{devlin2019bert}
+%
+%\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Pre-training -- Finetuning}
+
+    \centering
+
+    {\huge
+		Většina state-of-the-art řešení v NLP používá \textbf{předtrénovaný} model
+		občas dotrénovaný na datech specifických pro úlohu.}
+
+    \vspace{30pt}
+
+	Trend vývoje: lepší předtrénované modely, nižší potřeba specifických dat,
+		instruction tuning
+
+\end{frame}

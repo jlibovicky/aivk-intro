@@ -1,0 +1,280 @@
+% ----------------------------------------------------------------------------
+\section{Velké jazykové modely}
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Generativní jazykové modely}
+
+    \begin{itemize}[<+->]
+
+        \item GPT = Generative Pre-trained Transformer
+
+        \item Model, který předpovídá, jaké slovo v textu může následovat \\
+            \it v~projektu TheAItre ho použili ke generování divadelní hry
+
+        \item GPT-3 je natrénovaný na 45TB textu (37 milionů Zločinů a trestů),
+            má 175 miliard parametrů (1600$\times$ více než BERT)
+
+            \begin{itemize}[<+->]
+
+                \item 37M Zločinů a trestů by na ploše fotbalového hřiště
+                    dosáhlo výšky 4.5m
+
+                \item BERT by mohl běžet na GPU z~PlayStation 5
+
+                \item GPT-3 by potřebovalo přes 100 PlayStationů
+
+            \end{itemize}
+
+	%\item Ještě větší modely: Gopher 280B param., 1.9TB textu,  {\small (DeepMind; \citealp{deepmind2021gopher})} , \\ \quad  PaLM 540B param.,  {\small (Google;  \citealp{google2022palm})}
+
+		\item Neplatí, že čím větší model, tím lepší -- scaling laws ukazují,
+				že menší model, co se déle trénuje, může být lepší
+
+		\item Dnešní 8B modely fungují lépe než GPT-3
+
+    \end{itemize}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{In-Context Learning}
+
+    \begin{center}
+        \visible<2->{{\color{gray} Šedý text je \textbf{vstup do modelu},} černý text je jak \textbf{model navázal}.} \\
+        \fbox{\includegraphics[scale=.65]{img/fewshot.pdf}} \\
+        \tiny Zdroj: \citet[obr.\ 3.17]{brown2020gpt}
+    \end{center}
+
+    \begin{itemize}
+
+        \item<3-> Neprobíhá učení -- žádný update parametrů
+
+        \item<4-> Jazykový model vidí příklad a pokračuje ve stejném stylu
+
+    \end{itemize}
+
+\end{frame}
+
+% -----------------------------------------------------------------------------
+
+\begin{frame}{Scaling Laws}
+
+    \begin{center}
+    Experimenty Chinchila Google DeepMindu: delší trénování může kompenzovat počet parametrů
+    \citep[Figure~1]{hoffmann2022training}
+
+    \vspace{5pt}
+    \includegraphics[scale=.6]{img/chinchilla.pdf}
+
+    \vspace{10pt}
+
+    Používá LLaMA a LLaMA 2 od Meta: Srovnatelné jako GPT-3, ale má jenom 30B parametrů \\
+    \citep{touvron2023llama}
+
+    \end{center}
+
+\end{frame}
+
+% -----------------------------------------------------------------------------
+
+\begin{frame}{Emergentní vlastnosti LM (1)}
+
+    \centering
+    \includegraphics[scale=.65]{img/emergent.pdf}\hspace{10pt}
+    \rotatebox{90}{\begin{minipage}{200pt}
+			Zdroj: \citet[obrázek 2]{wei2022emergent}
+    \end{minipage}}
+
+\end{frame}
+
+% -----------------------------------------------------------------------------
+
+\begin{frame}{Emergentní vlastnosti LM (2)}
+
+    \begin{itemize}[<+->]
+
+		\item Nové schopnosti jazykových modelů se \textbf{objevují s
+				velikostí} -- musí se \textbf{objevit}
+
+		\item Skeptický protiargument: Retrospektivně se dá najít
+				\textbf{spojitá metrika}, která ukazuje, že změna je průběžná
+					\citep{schaeffer2023emergent}
+
+    \end{itemize}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Férovost dat}
+
+    \begin{center}
+
+        \visible<1->{Modely potřebují \textbf{enormní množství textu}, které
+        je jenom na Internetu\ldots}
+
+        \visible<2->{\ldots Internet je plný \textbf{toxického obsahu}.}
+    \end{center}
+
+    \centering
+
+    \visible<3->{
+        GPT-2 navrhuje pokračování textu: \\
+        \includegraphics[scale=.42]{./img/hitler.png}}
+
+    {\tiny Vytvořeno pomocí \url{https://transformer.huggingface.co/doc/gpt2-large}, model: \citet{radford2019language}}
+
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Asistenti založení na LLM}
+
+    \begin{columns}
+
+    \column{.3\textwidth}
+        \includegraphics[width=\textwidth]{img/ChatGPT.png}
+
+    \column{.66\textwidth}
+    \begin{itemize}[<+->]
+
+        \item Chatbot -- program, který komunikuje s~člověkem v~přirozeném jazyce
+
+        \item Společnost OpenAI spustila ChatGPT v~prosinci 2022, GPT-4 březen 2023
+
+		\item Uzavřené komerční modely (Gemini, Claude AI) a trochu ovevřenější modely (LLaMA3, Mistral)
+
+        \item Založený na jazykovém modelu dotrénovaný pro ,,řešení úloh`` podle instrukcí
+
+        \item Výborně ovládá angličtinu (a dobře další jazyky), sem tam nějaké encyklopedické
+            znalosti, znalost programování
+
+    \end{itemize}
+
+    \end{columns}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{InstructGPT: Předchůdce ChatGPT}
+    \centering
+    \includegraphics[width=.8\textwidth]{img/instructgpt.pdf} \\
+    \tiny Zdroj \citet[Figure 2]{ouyang2022instruct}
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Zpětnovazebné učení}
+
+    \centering
+    \begin{tikzpicture}
+
+        \node (prompt) {Prompt from dataset/logs};
+
+        \node[inner sep=5pt,fill=ufallightblue, below=40pt of prompt,minimum height=50pt] (lm) {\begin{minipage}{100pt}\centering\large Language \\ model \end{minipage}};
+
+        \draw[->] (prompt) -- (lm);
+
+        \node[below=40pt of lm] (answer) {Sampled answer};
+
+        \draw[->] (lm) -- (answer);
+
+        \visible<2->{
+        \node[inner sep=5pt,fill=ufalgreen, right=130pt of lm,minimum height=30pt] (reward) {\begin{minipage}{80pt}\centering Reward \\ model \end{minipage}};
+        \draw[->] (answer.east) to[out=0,in=270, looseness=0.7] (reward.south);
+        \draw[->] (prompt.east) to[out=0,in=90, looseness=0.7] (reward.north);
+        }
+
+        \visible<3->{
+        \node[right=40pt of lm,fill=ufal,circle] (optim) {\begin{minipage}{40pt}\centering Proximal \\ Policy \\ Optim. \end{minipage}};
+        \draw[->] (reward) -- (optim);
+        \draw[->] (optim) -- (lm);
+        }
+
+    \end{tikzpicture}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Direct Preference Optimization}
+
+    \centering
+    \includegraphics[width=.9\textwidth]{img/dpo.png} \\[1em]
+    \includegraphics[width=.9\textwidth]{img/dpo-equation.png} \\
+
+    \tiny Zdroj: \citet{rafailov2024direct}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Přemýšlející modely}
+
+    \begin{center}
+        Chain of Thought Prompting Elicits Reasoning in Large Language Models, \citet{wei2022cot}
+    \end{center}
+
+    \begin{columns}
+        \column{.45\textwidth}
+        \includegraphics[width=\textwidth]{img/cot.png}
+
+        \column{.45\textwidth}
+        \begin{itemize}
+
+            \item<2-> Promptuju tak, aby model nejdřív generoval hypotézy a zdůvodnění a na konci až odpověď
+
+            \item<3-> Mohu dotrévat model tak, aby to dělal vždy
+
+        \end{itemize}
+
+        \visible<4->{\begin{center}
+
+            $\rightarrow$ modely jako o1, o3, DeepSeek R1
+
+        \end{center}}
+
+    \end{columns}
+
+\end{frame}
+
+
+%\begin{frame}{Problémy ChatGPT}
+%
+%    \begin{itemize}
+%
+%        \item Trénovací data se sbírala v~chudých zemích za nízkou mzdu {\tiny \\
+%            \url{https://time.com/6247678/openai-chatgpt-kenya-workers}}
+%
+%		\item Z principu není možné znát zdroj informací, které říká {\small (ani v~případě Retrieval Augmented Generation)}
+%
+%        \item Kdo neplatí, daruje data OpenAI/Googlu/\ldots
+%
+%    \end{itemize}
+%
+%    %\vspace{10pt}
+%
+%    %Více otázek a odpovědí má můj blog: \url{https://jlibovicky.github.io//2023/02/07/Otazky-a-odpovedi-o-ChatGPT-a-jazykovych-modelech.html}
+%
+%\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{O čem se mluví v~souvislosti s~LLM}
+    \begin{itemize}[<+->]
+
+        \item Etické aspekty vývoje (získávání dat, přírodní zdroje)
+
+        \item Nízká interpretovatelnost modelů
+
+        \item Čí (pokud vůbec něčí) hodnoty modely reprezentují?
+
+        \item Dopady na trh práce, vzdělání, politiku
+
+        \item Technologická (ne)závislost Evropy na USA a Číně
+
+    \end{itemize}
+\end{frame}

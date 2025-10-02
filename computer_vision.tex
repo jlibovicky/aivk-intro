@@ -1,0 +1,193 @@
+\section{Počítačové vidění}
+
+\begin{frame}{Úlohy počítačového vidění}
+
+    \vspace{-5pt}
+    \begin{center}
+        \large Cokoli, co se dá zjistit z obrazu, např. \ldots
+    \end{center}
+
+    \visible<2->{
+    \begin{columns}[t]
+        \column{.3\textwidth}
+        \centering \textbf{Rozpoznávání objektů} \\[1ex]
+        \includegraphics[width=.98\textwidth]{img/object_detection.png} \\
+        {\tiny Zdroj: \url{https://pjreddie.com/darknet/yolo}}
+
+        \column{.3\textwidth}
+        \centering \textbf{Odhad hloubky v obrazu} \\[1ex]
+        \includegraphics[width=.98\textwidth]{img/monocular_depth.png} \\
+        {\tiny Zdroj: \citet[s.\ 9250, obr.\ 1]{pillai2019super}}
+
+        \column{.3\textwidth}
+        \centering \textbf{Poloha lidského těla} \\[1ex]
+        \includegraphics[width=.98\textwidth]{img/pose_detection.png} \\
+
+        \begin{minipage}{\textwidth}
+        \tiny Zdroj: \href{https://towardsdatascience.com/realtime-multiple-person-2d-pose-estimation-using-tensorflow2-x-93e4c156d45f}{\tt https://towardsdatascience.com/\\ realtime-multiple-person-2d-pose- \\ estimation-using-tensorflow2- \\ x-93e4c156d45f}
+        \end{minipage}
+
+    \end{columns}}
+
+    \visible<3->{\begin{center}
+        \large \ldots pro člověka většinou triviální úlohy
+    \end{center}}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Úlohy počítačového vidění}
+
+    \visible<1->{\begin{center}
+        \large \ldots ale i vyžadující expertní znalost.
+    \end{center}}
+
+    \visible<2->{
+    \begin{columns}[t]
+        \column{.45\textwidth}
+        \centering \textbf{Detekce tuberkulózy} \\[1ex]
+        \includegraphics[scale=.13]{img/tuberculosis.png} \\
+        {\tiny Zdroj: \citet[obr.\ 3]{Pasa-et-al-2019}}
+
+        \column{.45\textwidth}
+        \centering \textbf{Katalogizace galaxií} \\[1ex]
+    \includegraphics[scale=.15]{img/galaxies.png} \\
+        {\tiny Zdroj: \citep[obr.\ 4]{gonzales2018galaxy}}
+    \end{columns}}
+
+    \centering
+    \visible<3->{Pro počítač žádný rozdíl.}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Konvoluční sítě}
+
+    \begin{minipage}{.45\textwidth}
+        \begin{itemize}[<+->]
+
+            \item Základní nástroj pro zpracování obrazu neuronovými sítěmi
+
+            \item Okénko, které jede přes obrázek a detekuje nějaké vzorce
+
+            \item Mnoho vrstvev $\rightarrow$ vzorce vzorců vzorců\ldots
+
+            \item Model si vytváří potřebné abstrakce
+
+        \end{itemize}
+    \end{minipage}\begin{minipage}{.45\textwidth}
+        \centering
+        \scalebox{0.7}{\input{img/convolution2d.pdf_tex}}
+    \end{minipage}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Hluboké konvoluční sítě}
+
+    \begin{center}
+        \scalebox{0.4}{\input{./img/alexnet.pdf_tex}}
+    \end{center}
+
+    \begin{itemize}[<+->]
+
+        \item Hluboká architektura: konvoluce, max-pooling, residual connections,
+            batch normalization, 50--150 vrstev
+
+        \item Typicky ,,předtrénováno'' na velkých datech, pro jednotlivé úlohy
+            se ,,dotrénovávají'' poslední vrstvy
+
+    \end{itemize}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{ImageNet: rozpoznávání objektů}
+
+    \begin{center}
+        Dataset, který pomohl odstartovat revoluci ve strojovém učení.
+    \end{center}
+
+    \centering
+
+    \includegraphics[scale=.34]{./img/imagenet.png} \\
+    {\tiny Zdroj: \citet[obr.\ 1]{deng2009imagenet}}
+
+    \visible<2->{14M obrázků, 1000 různých tříd}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{ImageNet challenge}
+
+    \centering
+    \input{plots/imagenet.tex}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Předtrénované reprezentace}
+
+    \begin{columns}
+
+        \column{.45\textwidth}
+        \centering
+
+        Nejpodobnější vektory k reprezentaci z poslední vrstvy AlexNetu.
+
+        \includegraphics[scale=0.25]{./img/alexnet_neighbors.png} \\
+        {\tiny Zdroj: \citet[obr.\ 4]{krizhevsky_imagenet_2012}}
+
+        % TODO: vyznačit sloupec a neighbors
+        % TODO: zopakovat obrázek AlexNetu 
+
+
+        \column{.45\textwidth}
+    \begin{itemize}[<+->]
+
+        \item Klasifikace obrázků se učí obecné rysy
+
+        \item Prakticky všechny úlohy začínají s předtrénovaným modelem
+
+        \item Postupně se nahrazuje unsupervised metodami
+
+    \end{itemize}
+
+
+    \end{columns}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Problémy ImageNetu}
+
+    \begin{itemize}[<+->]
+
+        \item Založeno na lexikální databázi z 90.\ let -- reflektuje o čem se
+            mluvilo v USA před 40 lety
+
+        \item Není kulturně neutrální: anglické slovo \emph{shovel} v~severní
+            Americe a v~jižní Africe \\ {\tiny obrázek z prezentace
+            \citet{liu-etal-2021-visually}} \\
+            \includegraphics[scale=.35]{img/shovel.png}
+
+        \item Obsahuje obrázky ke nutně stereotypním konceptům jako {\tiny \citep[str.\ 109]{crawford2021atlas}} \\
+            \quad\it ,,alcoholic,'' ,,ape-man,'' ,,crazy,'' ,,hooker''
+    \end{itemize}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+%\begin{frame}{Rozpoznávání obličejů}
+%\end{frame}
+
+
+% ----------------------------------------------------------------------------
