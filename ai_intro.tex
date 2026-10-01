@@ -36,11 +36,11 @@
 \begin{frame}{Exponenciálně rostoucí obor}
 
     \centering
-    \includegraphics[scale=.25]{./img/exp_growth.jpg}
+    \input{plots/arxiv_growth.tex}
 
-    Počet publikovaných článků se každé dva roky zdvojnásobí.
+    Počet článků na arXivu se zhruba každé dva roky zdvojnásobí.
 
-    {\footnotesize Zdroj: \citet{krenn2022prediction}}
+    {\footnotesize Zdroj: měsíční počty článků v kategoriích cs.AI a cs.CL na arxiv.org}
 
 \end{frame}
 
@@ -66,7 +66,12 @@
 
     \begin{columns}
         \column{.40\textwidth}
-        \includegraphics[scale=0.45]{./img/navigation.pdf}
+        \includegraphics[scale=0.38]{./img/navigation.pdf}
+
+        \vspace{5pt}
+
+        \visible<16->{\small Dnes by šlo většinu kroků nahradit \textbf{jedním
+        multimodálním modelem} (řeč, text, obraz na vstupu i výstupu).}
 
         \column{.55\textwidth}
 
@@ -98,24 +103,6 @@
     \end{columns}
 
 \end{frame}
-
-% ----------------------------------------------------------------------------
-\begin{frame}{AI Asistent}
-
-    \begin{itemize}[<+->]
-
-        \item Vnější algoritmus volá LLM: prosí ho o další token, dokud nedokončí odpověď
-
-        \item Může interpretovat některé výstupy LLM jako příkazy (typicky
-            non-AI programy), které vykoná a pak pošle výsledek zpět LLM (agenti)
-
-        \item RAG -- Retrieval Augmented Generation: LLM může vyhledávat
-            informace v~externí databázi a pak je použít pro generování odpovědi
-
-    \end{itemize}
-
-\end{frame}
-
 
 % ----------------------------------------------------------------------------
 
@@ -155,16 +142,18 @@
             \item<7-> Cílem je řešit \textbf{jednotlivé úlohy}, které vyžadují
 					(lidskou) inteligenci
 
-            \item<8-> Všechno, o čem bude dnes řeč, je weak AI
+            %\item<8-> Všechno, o čem bude dnes řeč, je weak AI
+            \item<8-> Klasické metody (překlad, rozpoznávání obrázků\ldots) jsou weak AI
 
         \end{itemize}
 
-		\vspace{15pt}
-
-			\visible<9->{Co je inteligence a co je jenom počítání?}
-
     \end{columns}
 
+    \vspace{10pt}
+
+    \visible<9->{\textbf{Kam patří LLM?} Obecné modely, které řeší
+    mnoho úloh -- ani klasická weak AI, ani AGI. Firmy ale AGI otevřeně
+    deklarují jako cíl.}
 
 \end{frame}
 
@@ -238,8 +227,8 @@
 
         \item Často je to strojové učení pomocí \textbf{neuronových sítí} \\[1em]
 
-        \item Fantazie/marketing CEOs technologických firem a hype médií
-            \visible<4->{\hfill\it\color{gray} (a někdy i vědců)} \\[1em]
+        \item V~médiích skoro vždy \textbf{chatboti a agenti} založení na
+            velkých jazykových modelech (LLM) \\[1em]
 
     \end{itemize}
 

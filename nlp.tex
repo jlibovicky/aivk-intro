@@ -25,23 +25,45 @@
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Vyhledávání odpovědí na otázky}
+\begin{frame}{Klasické úlohy NLP}
 
-    \centering
-    \includegraphics[scale=.26]{img/qa.png} \\
-    {\tiny Screenshot z~dema Allen Institute for AI \url{https://demo.allennlp.org/reading-comprehension/transformer-qa}}
+    \begin{columns}[t]
+        \column{.45\textwidth}
+        \begin{itemize}
+
+            \item Kontrola pravopisu a gramatiky
+
+            \item Strojový překlad
+
+            \item Odpovídání na otázky
+
+            \item Vyhledávání entit (jména, místa, organizace)
+
+            \item Klasifikace textu (spam, sentiment, téma)
+
+            \item Shrnutí textu
+
+        \end{itemize}
+
+        \column{.45\textwidth}
+
+        \visible<2->{
+        \textbf{Dřív:} pro každou úlohu zvláštní systém, zvláštní trénovací
+        data}
+
+        \vspace{10pt}
+
+        \visible<3->{
+        \textbf{Dnes:} většinu úloh zvládne jeden obecný \textbf{velký
+        jazykový model}, stačí mu úlohu popsat}
+
+    \end{columns}
 
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Kontrola pravopisu}
-
-    \centering
-    \includegraphics[scale=.3]{img/grammarly.png} \\
-    {\tiny Zdroj: Webová reklama grammarly.com}
-
-\end{frame}
+%\input{nlp_tasks}
 
 % ----------------------------------------------------------------------------
 
@@ -55,23 +77,33 @@
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Entity extraction}
+% token v barevném rámečku, \strut zajistí stejnou výšku všech rámečků
+\newcommand{\tok}[2]{{\setlength{\fboxsep}{2pt}\colorbox{#1!45}{\strut\texttt{#2}}}}
 
-    \includegraphics[scale=.4]{./img/mona_lisa.png} \\
-    {\tiny Zdroj: \url{https://dandelion.eu/semantic-text/entity-extraction-demo}}
+\begin{frame}{Tokenizace}
 
-    \vspace{10pt}
+    \begin{itemize}[<+->]
 
-    \visible<2->{Podúlohy:}
-    \begin{enumerate}
+        \item Model nepracuje přímo se slovy, ale s~\textbf{tokeny}
 
-        \item<3-> Named entity recognition: nalézt v~textu řetězce, co obsahují
-            pojmenované entity
+        \item Slovník tokenů má pevnou velikost (desítky až stovky tisíc položek)
 
-        \item<4-> Entity linking: co entity znamenají (první pád, odkaz do
-            databáze/na Wikipedii)
+        \item Častá slova = jeden token, vzácná slova se rozpadnou na kousky \\[5pt]
+            \begin{tabular}{lll}
+            \tok{SkyBlue}{the}\tok{Dandelion}{\textvisiblespace most}\tok{YellowGreen}{\textvisiblespace probable}
+                & & {\small 3 tokeny} \\[3pt]
+            \tok{SkyBlue}{nej}\tok{Dandelion}{pr}\tok{YellowGreen}{av}\tok{Lavender}{d}\tok{Peach}{ě}%
+            \tok{SkyBlue}{pod}\tok{Dandelion}{ob}\tok{YellowGreen}{n}\tok{Lavender}{ě}\tok{Peach}{jší}
+                & & {\small 10 tokenů} \\
+            \end{tabular} \\
+            {\footnotesize\color{gray} tokenizér GPT-4}
 
-    \end{enumerate}
+        \item Slovník se ,,naučí'' ze statistiky textu {\footnotesize \citep{sennrich2016improving}}
+
+        \item Angličtina potřebuje méně tokenů než čeština $\Rightarrow$ zpracování
+            češtiny je pomalejší a dražší {\footnotesize\citep{arnett2025tokenizer}}
+
+    \end{itemize}
 
 \end{frame}
 
@@ -259,17 +291,20 @@
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Pre-training -- Finetuning}
-
-    \centering
-
-    {\huge
-		Většina state-of-the-art řešení v NLP používá \textbf{předtrénovaný} model
-		občas dotrénovaný na datech specifických pro úlohu.}
-
-    \vspace{30pt}
-
-	Trend vývoje: lepší předtrénované modely, nižší potřeba specifických dat,
-		instruction tuning
-
-\end{frame}
+%\begin{frame}{Pre-training -- Finetuning}
+%
+%    \centering
+%
+%    {\huge
+%		Většina state-of-the-art řešení v NLP používá \textbf{předtrénovaný} model
+%		občas dotrénovaný na datech specifických pro úlohu.}
+%
+%    \vspace{30pt}
+%
+%	%Trend vývoje: lepší předtrénované modely, nižší potřeba specifických dat,
+%	%	instruction tuning
+%	Vývoj posledních let: předtrénované modely jsou tak dobré, že místo
+%	dotrénování často stačí úlohu \textbf{popsat v~promptu} (instruction tuning,
+%	in-context learning)
+%
+%\end{frame}

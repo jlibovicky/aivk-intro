@@ -1,0 +1,58 @@
+% Monthly number of papers in arXiv cs.AI and cs.CL with exponential fits.
+% Data: arxiv_stats_{AI,CL}.csv (MM/YYYY,count), produced by arxiv_stats.sh.
+% Dates are parsed by dropping the slash and prepending 1 (to avoid octal
+% parsing of the leading zero): MM/YYYY -> 1MMYYYY.
+% x = years since 2000; the fit is a linear regression on log(count), using
+% only data from \arxivfitfrom on (older points get a huge variance).
+\def\arxivfitfrom{2010}
+\pgfplotstableset{arxiv table/.style={col sep=comma, header=false, ignore chars={/}}}
+% #1 = CSV file, #2 = table macro, #3 = name prefix of the fit macros
+\newcommand{\arxivtable}[3]{%
+    \pgfplotstableread[arxiv table]{#1}#2%
+    \pgfplotstablecreatecol[create col/expr={%
+        mod(1\thisrowno{0},10000) - 2000 + (floor(1\thisrowno{0}/10000) - 101) / 12}]{x}{#2}%
+    \pgfplotstablecreatecol[create col/expr={ln(\thisrowno{1})}]{lny}{#2}%
+    \pgfplotstablecreatecol[create col/expr={%
+        \thisrow{x} < \arxivfitfrom - 2000 ? 1e9 : 1}]{var}{#2}%
+    \pgfplotstablecreatecol[create col/linear regression={
+        x=x, y=lny, variance=var}]{fit}{#2}%
+    \expandafter\xdef\csname #3a\endcsname{\pgfplotstableregressiona}%
+    \expandafter\xdef\csname #3b\endcsname{\pgfplotstableregressionb}%
+}
+\arxivtable{arxiv_stats_AI.csv}{\arxivAI}{fitAI}
+\arxivtable{arxiv_stats_CL.csv}{\arxivCL}{fitCL}
+\pgfmathsetmacro{\doubleAI}{ln(2) / \fitAIa}
+\pgfmathsetmacro{\doubleCL}{ln(2) / \fitCLa}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        width=12cm, height=6cm,
+        xmin=5, xmax=27, ymin=0, ymax=5000,
+        xtick={5,10,...,25},
+        xticklabel={\pgfmathparse{int(\tick + 2000)}\pgfmathresult},
+        xticklabel style={/pgf/number format/1000 sep={}},
+        scaled y ticks=false,
+        yticklabel style={/pgf/number format/1000 sep={\,}},
+        ylabel={Počet článků za měsíc},
+        legend pos=north west,
+        legend cell align=left,
+        legend style={font=\footnotesize, draw=none, fill=none},
+        legend image post style={mark size=1.5pt, opacity=1},
+        tick label style={font=\footnotesize},
+        label style={font=\footnotesize},
+    ]
+        \addplot[only marks, mark=*, mark size=.8pt, blue!60, opacity=.6]
+            table[x=x, y index=1] {\arxivAI};
+        \addlegendentry{cs.AI (umělá inteligence)}
+        \addplot[only marks, mark=*, mark size=.8pt, orange!80!black, opacity=.6]
+            table[x=x, y index=1] {\arxivCL};
+        \addlegendentry{cs.CL (zpracování jazyka)}
+
+        \addplot[blue!80!black, thick, domain=5:27, samples=100]
+            {exp(\fitAIa * x + \fitAIb)};
+        \addlegendentry{fit cs.AI: zdvojnásobení za \pgfmathprintnumber[fixed, precision=1, use comma]{\doubleAI} roku}
+        \addplot[orange!70!black, thick, domain=5:27, samples=100]
+            {exp(\fitCLa * x + \fitCLb)};
+        \addlegendentry{fit cs.CL: zdvojnásobení za \pgfmathprintnumber[fixed, precision=1, use comma]{\doubleCL} roku}
+    \end{axis}
+\end{tikzpicture}

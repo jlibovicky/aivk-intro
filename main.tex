@@ -23,6 +23,9 @@
 \usepackage{tikz}
 \usepackage{gnuplot-lua-tikz}
 \usepackage{tikz-qtree}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.17}
 \usetikzlibrary{calc}
 \usetikzlibrary{arrows,shapes,positioning}
 \usetikzlibrary{arrows.meta}
@@ -36,7 +39,7 @@
 \def\title{Úvodní přednáška}
 \def\subtitle{Co je a není AI, co je strojové učení a neuronové sítě}
 \def\author{Tereza Hanemann, \underline{Jindřich Libovický}, Rudolf Rosa}
-\def\date{19. února 2026}
+\def\date{1. října 2026}
 \def\licence{cc-by-nc-sa}
 \def\showtitleoneveryframe{}
 %\def\langtech{}
@@ -95,7 +98,7 @@
 
 % ----------------------------------------------------------------------------
 
-%\include{program_ls_2026}
+\include{program_zs_2026}
 
 % ----------------------------------------------------------------------------
 
@@ -168,6 +171,9 @@
         \item Technicky: Nejčastěji se AI myslí strojové učení a neuronové sítě
 
         \item Společensky: AI většinou znamenají LLM a jejich aplikace
+
+        \item LLM čím dál víc fungují jako agenti: samy volají nástroje
+            a plní delší úkoly
 
         \item Všechno závisí na datech -- mnoho etických problémů
 

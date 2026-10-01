@@ -97,23 +97,23 @@
 \begin{frame}{Příklad strojového učení}
 
     \centering
-    \begin{tabular}{lcc}
-        & \visible<1->{\bf Rozpoznávání objektů & \bf Strojový překlad} \\ \midrule
+    \begin{tabular}{lc}
+        & \visible<1->{\bf Strojový překlad} \\ \midrule
 
         \visible<2->{
-        \bf Data & $x$: RGB obrázek           & $x$: Věta ve zdrojovém jazyce \\
-             & $y$: Pozice a typ objektu  & $y$: Věta v cílovém jazyce \\ \midrule}
+        \bf Data & $x$: Věta ve zdrojovém jazyce \\
+             & $y$: Věta v cílovém jazyce \\ \midrule}
 
          \visible<3->{
-        \bf Učící algoritmus & \multicolumn{2}{c}{Minimalizace chyby, gradient descent} \\ \midrule}
+        \bf Učící algoritmus & Minimalizace chyby, gradient descent \\ \midrule}
 
     \visible<4->{
-        \bf Model & konvoluční neuronová síť & Transformer (neuronová síť)  \\ \midrule}
+        \bf Model & Transformer (neuronová síť)  \\ \midrule}
 
     \visible<5->{
-    \bf Algoritmus & sliding window přes obrázek & autoregresivní dekódování \\
-               & (obdélníky různých velikostí) & (vždy jedno slovo na výstup, \\
-               &  & jde na vstup v dalším kroku)}
+    \bf Algoritmus & autoregresivní dekódování \\
+               & (vždy jedno slovo na výstup, \\
+               & jde na vstup v dalším kroku)}
 
     \end{tabular}
 
@@ -131,7 +131,7 @@
 
     \visible<2->{
         \textbf{\Large Přeučení} = model si zapamatuje trénovací data, funguje dobře jenom pro data, která vypadají jako trénovací} \\
-    \visible<3->{\hfill \Large\bf \ldots nejčastější zdroj chyb a diskriminace}
+    \visible<3->{\hfill \Large\bf \ldots nejčastější zdroj problémů}
 
 \end{frame}
 
@@ -223,6 +223,11 @@
 
     \end{itemize}
 
+    \visible<4->{
+    \begin{center}
+    \large trénovaní potřebuje data a data nejsou zadarmo
+    \end{center}}
+
 \end{frame}
 
 % ----------------------------------------------------------------------------
@@ -252,7 +257,32 @@
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Problémy učení z dat: Overfitting}
+\begin{frame}{Problematická trénovací data (2)}
+
+    \visible<1->{
+    {\Large\textbf{Autorská práva}} --- modely se trénují na knihách, článcích
+    a obrázcích bez svolení autorů; řada soudních sporů, např.\ Anthropic
+    v~roce 2025 urovnal spor s~autory knih za 1,5 mld.\ USD}
+
+    \vspace{15pt}
+
+    \visible<2->{
+    {\Large\textbf{Syntetická data}} --- modely se čím dál víc trénují na
+    výstupech jiných modelů; trénování jen na generovaných datech může vést
+    k~degradaci modelu (\emph{model collapse})
+    \\ \hfill {\footnotesize \citep{shumailov2024collapse}}}
+
+    \vspace{15pt}
+
+    \visible<3->{
+    {\Large\textbf{Internet se mění}} --- stále větší část textu na webu je
+    generovaná AI, weby blokují stahování dat pro trénování}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Problémy učení z dat: Zkreslení (bias)}
 
     \begin{itemize}
 

@@ -9,7 +9,6 @@
         \item GPT = Generative Pre-trained Transformer
 
         \item Model, který předpovídá, jaké slovo v textu může následovat \\
-            \it v~projektu TheAItre ho použili ke generování divadelní hry
 
         \item GPT-3 je natrénovaný na 45TB textu (37 milionů Zločinů a trestů),
             má 175 miliard parametrů (1600$\times$ více než BERT)
@@ -27,10 +26,19 @@
 
 	%\item Ještě větší modely: Gopher 280B param., 1.9TB textu,  {\small (DeepMind; \citealp{deepmind2021gopher})} , \\ \quad  PaLM 540B param.,  {\small (Google;  \citealp{google2022palm})}
 
-		\item Neplatí, že čím větší model, tím lepší -- scaling laws ukazují,
-				že menší model, co se déle trénuje, může být lepší
+		%\item Neplatí, že čím větší model, tím lepší -- scaling laws ukazují,
+		%		že menší model, co se déle trénuje, může být lepší
 
-		\item Dnešní 8B modely fungují lépe než GPT-3
+		%\item Dnešní 8B modely fungují lépe než GPT-3
+
+		\item GPT-3 (2020) viděl při trénování 300 miliard tokenů, dnešní
+				modely 15--36 \textbf{bilionů} tokenů {\small(50--100$\times$ víc)} \\
+				{\footnotesize \citep{grattafiori2024llama3,yang2025qwen3}}
+
+		\item Velikost nejlepších komerčních modelů firmy nezveřejňují
+
+		\item Dnes i modely s~1--4 mld.\ parametrů (běží na telefonu)
+				fungují lépe než GPT-3
 
     \end{itemize}
 
@@ -62,15 +70,20 @@
 
     \begin{center}
     Experimenty Chinchilla Google DeepMindu: delší trénování může kompenzovat počet parametrů
-    \citep[Figure~1]{hoffmann2022training}
+    {\footnotesize \citep[Figure~1]{hoffmann2022training}}
 
     \vspace{5pt}
-    \includegraphics[scale=.6]{img/chinchilla.pdf}
+    \includegraphics[scale=.48]{img/chinchilla.pdf}
 
-    \vspace{10pt}
+    \vspace{5pt}
 
-    Používá LLaMA a LLaMA 2 od Meta: Srovnatelné jako GPT-3, ale má jenom 30B parametrů \\
+    LLaMA od Mety (2023): 13B model lepší než GPT-3 se 175B parametry
     \citep{touvron2023llama}
+
+    \vspace{5pt}
+
+    \visible<2->{Od roku 2024: škáluje se i \textbf{výpočet při použití}
+    (model déle ,,přemýšlí'') a \textbf{zpětnovazebné učení}}
 
     \end{center}
 
@@ -78,32 +91,36 @@
 
 % -----------------------------------------------------------------------------
 
-\begin{frame}{Emergentní vlastnosti LM (1)}
-
-    \centering
-    \includegraphics[scale=.65]{img/emergent.pdf}\hspace{10pt}
-    \rotatebox{90}{\begin{minipage}{200pt}
-			Zdroj: \citet[obrázek 2]{wei2022emergent}
-    \end{minipage}}
-
-\end{frame}
+%\begin{frame}{Emergentní vlastnosti LM}
+%
+%    \centering
+%    \includegraphics[scale=.52]{img/emergent.pdf}\hspace{10pt}
+%    \rotatebox{90}{\begin{minipage}{175pt}
+%			Zdroj: \citet[obrázek 2]{wei2022emergent}
+%    \end{minipage}}
+%
+%    \vspace{5pt}
+%    {\small Skeptický protiargument: se \textbf{spojitou metrikou} je zlepšování
+%    plynulé \citep{schaeffer2023emergent}}
+%
+%\end{frame}
 
 % -----------------------------------------------------------------------------
 
-\begin{frame}{Emergentní vlastnosti LM (2)}
-
-    \begin{itemize}[<+->]
-
-		\item Nové schopnosti jazykových modelů se \textbf{objevují s
-				velikostí} -- musí se \textbf{objevit}
-
-		\item Skeptický protiargument: Retrospektivně se dá najít
-				\textbf{spojitá metrika}, která ukazuje, že změna je průběžná
-					\citep{schaeffer2023emergent}
-
-    \end{itemize}
-
-\end{frame}
+%\begin{frame}{Emergentní vlastnosti LM (2)}
+%
+%    \begin{itemize}[<+->]
+%
+%		\item Nové schopnosti jazykových modelů se \textbf{objevují s
+%				velikostí} -- musí se \textbf{objevit}
+%
+%		\item Skeptický protiargument: Retrospektivně se dá najít
+%				\textbf{spojitá metrika}, která ukazuje, že změna je průběžná
+%					\citep{schaeffer2023emergent}
+%
+%    \end{itemize}
+%
+%\end{frame}
 
 % ----------------------------------------------------------------------------
 
@@ -125,6 +142,11 @@
 
     {\tiny Vytvořeno pomocí \url{https://transformer.huggingface.co/doc/gpt2-large}, model: \citet{radford2019language}}
 
+    \vspace{5pt}
+
+    \visible<4->{Chatboti se to dodatečně \textbf{učí nedělat} (bezpečnostní
+    trénování) -- základní model se ale z~dat naučil všechno.}
+
 
 \end{frame}
 
@@ -142,11 +164,15 @@
 
         \item Chatbot -- program, který komunikuje s~člověkem v~přirozeném jazyce
 
-        \item Společnost OpenAI spustila ChatGPT v~prosinci 2022, GPT-4 březen 2023
+        \item Společnost OpenAI spustila ChatGPT 30.~listopadu 2022
 
-		\item Uzavřené komerční modely (Gemini, Claude AI) a trochu otevřenější modely (LLaMA3, Mistral)
+		\item Uzavřené komerční modely (GPT, Gemini, Claude) \\ a modely
+				s~otevřenými váhami (Qwen, DeepSeek, Llama, Mistral, Gemma) \\
+				{\small\it nejlepší otevřené modely jsou dnes převážně čínské}
 
         \item Založený na jazykovém modelu dotrénovaný pro ,,řešení úloh`` podle instrukcí
+
+        \item \textbf{Multimodální}: čtou obrázky a dokumenty, mluví, generují obrázky
 
     \end{itemize}
 
@@ -156,56 +182,60 @@
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{InstructGPT: Předchůdce ChatGPT}
-    \centering
-    \includegraphics[width=.8\textwidth]{img/instructgpt.pdf} \\
-    \tiny Zdroj \citet[Figure 2]{ouyang2022instruct}
-\end{frame}
+%\begin{frame}{InstructGPT: Předchůdce ChatGPT}
+%    \centering
+%    \includegraphics[width=.8\textwidth]{img/instructgpt.pdf} \\
+%    \tiny Zdroj \citet[Figure 2]{ouyang2022instruct}
+%\end{frame}
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Zpětnovazebné učení}
+\begin{frame}{Jak se vyrábí chatbot}
 
     \centering
-    \begin{tikzpicture}
+    \begin{tikzpicture}[
+        stage/.style={draw, rounded corners, fill=####1, minimum width=110pt,
+            minimum height=45pt, align=center},
+        arr/.style={-{Stealth[length=8pt]}, very thick}]
 
-        \node (prompt) {Prompt from dataset/logs};
-
-        \node[inner sep=5pt,fill=ufallightblue, below=40pt of prompt,minimum height=50pt] (lm) {\begin{minipage}{100pt}\centering\large Language \\ model \end{minipage}};
-
-        \draw[->] (prompt) -- (lm);
-
-        \node[below=40pt of lm] (answer) {Sampled answer};
-
-        \draw[->] (lm) -- (answer);
+        \node[stage=ufallightblue] (pre) {\textbf{1. Předtrénování} \\ \small
+            předpovídání dalšího tokenu \\ \small na bilionech tokenů z~internetu};
 
         \visible<2->{
-        \node[inner sep=5pt,fill=ufalgreen, right=130pt of lm,minimum height=30pt] (reward) {\begin{minipage}{80pt}\centering Reward \\ model \end{minipage}};
-        \draw[->] (answer.east) to[out=0,in=270, looseness=0.7] (reward.south);
-        \draw[->] (prompt.east) to[out=0,in=90, looseness=0.7] (reward.north);
-        }
+        \node[stage=Dandelion!60, right=25pt of pre] (sft) {\textbf{2. Instrukce} \\ \small
+            příklady otázek \\ \small a vzorových odpovědí};
+        \draw[arr] (pre) -- (sft);}
 
         \visible<3->{
-        \node[right=40pt of lm,fill=ufal,circle] (optim) {\begin{minipage}{40pt}\centering Proximal \\ Policy \\ Optim. \end{minipage}};
-        \draw[->] (reward) -- (optim);
-        \draw[->] (optim) -- (lm);
-        }
+        \node[stage=ufalgreen!60, right=25pt of sft] (rl) {\textbf{3. Zpětná vazba} \\ \small
+            lidé (nebo modely) \\ \small hodnotí odpovědi};
+        \draw[arr] (sft) -- (rl);}
 
     \end{tikzpicture}
 
+    \vspace{20pt}
+
+    \begin{itemize}
+
+        \item<1-> Po kroku 1: model umí \textbf{pokračovat v~textu}, ne odpovídat
+
+        \item<2-> Po kroku 2: model odpovídá ve formátu konverzace
+
+        \item<3-> Po kroku 3: odpovědi, které lidé preferují (užitečné,
+            zdvořilé, bezpečné\ldots) -- ale také ty, které \textbf{lidem
+            lichotí}
+
+        \item<4-> Většina výpočetního výkonu jde do kroku 1, kroky 2 a 3
+            vyžadují hodně lidské práce
+
+    \end{itemize}
+
 \end{frame}
 
 % ----------------------------------------------------------------------------
 
-\begin{frame}{Direct Preference Optimization}
+%\input{llm_alignment}
 
-    \centering
-    \includegraphics[width=.9\textwidth]{img/dpo.png} \\[1em]
-    \includegraphics[width=.9\textwidth]{img/dpo-equation.png} \\
-
-    \tiny Zdroj: \citet{rafailov2024direct}
-
-\end{frame}
 
 % ----------------------------------------------------------------------------
 
@@ -226,11 +256,21 @@
 
             \item<3-> Mohu dotrénovat model tak, aby to dělal vždy
 
+            \item<4-> Od roku 2025: zpětnovazebné učení na úlohách
+                s~\textbf{ověřitelnou odpovědí} (matematika, programování)
+                {\footnotesize\citep{deepseek2025r1}}
+
         \end{itemize}
 
-        \visible<4->{\begin{center}
+        %\visible<4->{\begin{center}
+        %
+        %    $\rightarrow$ modely jako o1, o3, DeepSeek R1
+        %
+        %\end{center}}
+        \visible<5->{\begin{center}
 
-            $\rightarrow$ modely jako o1, o3, DeepSeek R1
+            $\rightarrow$ dnes standardní součást většiny asistentů \\
+            (režim ,,přemýšlení'')
 
         \end{center}}
 
@@ -239,39 +279,131 @@
 \end{frame}
 
 
-%\begin{frame}{Problémy ChatGPT}
-%
-%    \begin{itemize}
-%
-%        \item Trénovací data se sbírala v~chudých zemích za nízkou mzdu {\tiny \\
-%            \url{https://time.com/6247678/openai-chatgpt-kenya-workers}}
-%
-%		\item Z principu není možné znát zdroj informací, které říká {\small (ani v~případě Retrieval Augmented Generation)}
-%
-%        \item Kdo neplatí, daruje data OpenAI/Googlu/\ldots
-%
-%    \end{itemize}
-%
-%    %\vspace{10pt}
-%
-%    %Více otázek a odpovědí má můj blog: \url{https://jlibovicky.github.io//2023/02/07/Otazky-a-odpovedi-o-ChatGPT-a-jazykovych-modelech.html}
-%
-%\end{frame}
+% ----------------------------------------------------------------------------
+
+\begin{frame}{AI Asistent}
+
+    \begin{itemize}[<+->]
+
+        \item Vnější algoritmus volá LLM: prosí ho o další token, dokud nedokončí odpověď
+
+        \item Může interpretovat některé výstupy LLM jako příkazy (typicky
+            non-AI programy), které vykoná a pak pošle výsledek zpět LLM (agenti)
+
+        \item RAG -- Retrieval Augmented Generation: LLM může vyhledávat
+            informace v~externí databázi a pak je použít pro generování odpovědi
+
+    \end{itemize}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Agenti}
+
+    \begin{columns}
+        \column{.50\textwidth}
+        \centering
+        \begin{tikzpicture}[
+            box/.style={draw, rounded corners, minimum width=80pt,
+                minimum height=30pt, align=center, fill=####1},
+            arr/.style={-{Stealth[length=6pt]}, thick}]
+
+            \node[box=Gray!20] (user) {Uživatel: úkol};
+            \node[box=ufallightblue, below=25pt of user] (llm) {\textbf{LLM}};
+            \node[box=Dandelion!60, below=40pt of llm] (tool) {Nástroj \\ \small
+                (hledání, kód, soubory\ldots)};
+            \node[box=Gray!20, right=25pt of llm] (ans) {Odpověď};
+
+            \draw[arr] (user) -- (llm);
+            \draw[arr] (llm.south west) ++(15pt,0) to[bend right=30]
+                node[left, font=\small] {příkaz} ($(tool.north west)+(15pt,0)$);
+            \draw[arr] (tool.north east) ++(-15pt,0) to[bend right=30]
+                node[right, font=\small] {výsledek} ($(llm.south east)+(-15pt,0)$);
+            \draw[arr] (llm) -- (ans);
+
+        \end{tikzpicture}
+
+        \column{.5\textwidth}
+        \begin{itemize}[<+->]
+
+            \item Smyčka: LLM volá nástroje, dokud úkol není hotový
+
+            \item Programovací agenti: samostatně píší a testují kód
+
+            \item ,,Deep research'': desítky vyhledávání, výsledkem zpráva
+
+            \item Ovládání počítače a prohlížeče
+
+            \item Standardizované napojení nástrojů (např.\ MCP)
+
+            \item Riziko: \textbf{prompt injection} -- instrukce schované
+                v~datech, která agent čte
+
+        \end{itemize}
+    \end{columns}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}{Limity LLM}
+
+    \begin{itemize}[<+->]
+
+        \item \textbf{Halucinace}: model sebejistě vymýšlí fakta, citace,
+            zdroje -- trénování odměňuje odpověď víc než přiznání nejistoty
+            {\footnotesize\citep{kalai2025hallucinate}}
+
+        \item \textbf{Podlézavost} (sycophancy): model souhlasí s~uživatelem
+            a lichotí mu {\footnotesize\citep{sharma2024sycophancy}}
+
+        \item \textbf{Datum znalostí}: model ví jen to, co bylo v~trénovacích
+            datech, novější informace jen přes vyhledávání
+
+        \item \textbf{Zdroje}: model sám neví, odkud informaci má; citace
+            fungují jen s~vyhledáváním (a i tak ne vždy správně)
+
+        \item Výkon je \textbf{nerovnoměrný}: vyřeší olympiádní úlohu, ale
+            splete se v~jednoduché věci
+
+    \end{itemize}
+
+\end{frame}
+
 
 % ----------------------------------------------------------------------------
 
 \begin{frame}{O čem se mluví v~souvislosti s~LLM}
+    \begin{columns}[t]
+    \column{.48\textwidth}
     \begin{itemize}[<+->]
 
         \item Etické aspekty vývoje (získávání dat, přírodní zdroje)
+
+        \item Spotřeba energie a vody, výstavba datových center
+
+        \item Autorská práva a soudní spory
 
         \item Nízká interpretovatelnost modelů
 
         \item Čí (pokud vůbec něčí) hodnoty modely reprezentují?
 
+    \end{itemize}
+    \column{.48\textwidth}
+    \begin{itemize}[<+->]
+
         \item Dopady na trh práce, vzdělání, politiku
+
+        \item Citová závislost na chatbotech, duševní zdraví
+
+        \item Bezpečnost agentů
+
+        \item Regulace: EU AI Act (povinnosti pro obecné modely od
+            srpna 2025, další postupně)
 
         \item Technologická (ne)závislost Evropy na USA a Číně
 
     \end{itemize}
+    \end{columns}
 \end{frame}
