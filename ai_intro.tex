@@ -51,10 +51,10 @@
     \begin{quote}
         [T]he phrase “artificial intelligence” is deployed when the people building
         or selling a particular set of technologies will profit from getting others
-        to believe that their technology is similar to humans, able to do things
-        that, in fact, intrinsically require human judgment, perception, or
-        creativity.
+        to believe that their technology is similar to humans \ldots
     \end{quote}
+
+    \vspace{10pt}
 
     {\footnotesize Zdroj: \citet{bender2025ai}}
 
@@ -98,6 +98,24 @@
     \end{columns}
 
 \end{frame}
+
+% ----------------------------------------------------------------------------
+\begin{frame}{AI Asistent}
+
+    \begin{itemize}[<+->]
+
+        \item Vnější algoritmus volá LLM: prosí ho o další token, dokud nedokončí odpověď
+
+        \item Může interpretovat některé výstupy LLM jako příkazy (typicky
+            non-AI programy), které vykoná a pak pošle výsledek zpět LLM (agenti)
+
+        \item RAG -- Retrieval Augmented Generation: LLM může vyhledávat
+            informace v~externí databázi a pak je použít pro generování odpovědi
+
+    \end{itemize}
+
+\end{frame}
+
 
 % ----------------------------------------------------------------------------
 
